@@ -9,8 +9,8 @@ namespace DistraidaMente.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            Title = "Info";
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.uoc.edu/portal/es/"));
         }
 
         public ICommand OpenWebCommand { get; }

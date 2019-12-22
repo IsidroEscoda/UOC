@@ -12,44 +12,22 @@ namespace DistraidaMente.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : MasterDetailPage
+    public partial class MainPage : ContentPage
     {
-        Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        int clickTotal;
+
         public MainPage()
         {
             InitializeComponent();
-
-            MasterBehavior = MasterBehavior.Popover;
-
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
-
-        public async Task NavigateFromMenu(int id)
+        protected void OnImageButtonClicked(object sender, EventArgs e)
         {
-            if (!MenuPages.ContainsKey(id))
-            {
-                switch (id)
-                {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                }
-            }
-
-            var newPage = MenuPages[id];
-
-            if (newPage != null && Detail != newPage)
-            {
-                Detail = newPage;
-
-                if (Device.RuntimePlatform == Device.Android)
-                    await Task.Delay(100);
-
-                IsPresented = false;
-            }
+            ImageButton cell = (sender as ImageButton);
+            var classId = cell.ClassId;
+            //DisplayAlert("¿Cómo te encuentras?", "Has seleccionado " + classId, "OK");
+            clickTotal += 1;
+            TabsPage tabsPage = new TabsPage();
+            Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = tabsPage; });
         }
     }
 }

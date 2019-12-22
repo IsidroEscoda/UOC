@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+            xmlns:views="clr-namespace:DistraidaMente.Views"
+             x:Class="DistraidaMente.Views.TabsPage">
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <!-- Styles -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White"/>
+                <Setter Property="BarTextColor" Value="Black"/>
+            </Style>
+            <!-- Styles -->
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+    <!--Pages can be added as references or inline
+          <ContentPage Title="Tab 1" />
+          <ContentPage Title="Tab 2" />
+          <ContentPage Title="Tab 3" />-->
+    <TabbedPage.Children>
+        <NavigationPage Title="Home">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="home.png"/>
+                    <On Platform="Android" Value="home.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:HomePage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Info">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="info.png"/>
+                    <On Platform="Android" Value="info.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:AboutPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Ranking">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="list.png"/>
+                    <On Platform="Android" Value="list.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:RankingPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Yo">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="person.png"/>
+                    <On Platform="Android" Value="person.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:ProfilePage />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>

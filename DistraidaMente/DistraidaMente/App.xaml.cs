@@ -1,20 +1,20 @@
-﻿using System;
+﻿using DistraidaMente.Controllers;
+using DistraidaMente.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using DistraidaMente.Services;
-using DistraidaMente.Views;
 
 namespace DistraidaMente
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            DistractController controller = new DistractController();
+            controller.StartProcess();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

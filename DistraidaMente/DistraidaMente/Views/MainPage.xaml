@@ -1,27 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            mc:Ignorable="d"
-            xmlns:views="clr-namespace:DistraidaMente.Views"
-            x:Class="DistraidaMente.Views.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DistraidaMente.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="¿Cómo te encuentras?"
+               FontSize="25"
+               FontAttributes="Bold" VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            <Label HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontSize="20" FontAttributes="Bold" Text="Selecciona" />
+                        <Span FontSize="20" Text=" la opción que más se acerca a tu estado de ánimo" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
 
-    <MasterDetailPage.Master>
-        <views:MenuPage />
-    </MasterDetailPage.Master>
+            <!--<Label
+          Text="Hey, it's RelativeLayout! "
+          HorizontalOptions="Start" VerticalOptions="Center"/>
+            <RelativeLayout>
+                <Image
+            Source="happy.png"
+            WidthRequest="54"
+            HeightRequest="54"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=5}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=0}" />
+                <Label
+            Text=":)"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Constant=15}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0.10, Constant=25}"
+            TextColor="#000000"/>
+            </RelativeLayout>-->
 
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
-    
-</MasterDetailPage>
+
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="veryhappy" BackgroundColor="Transparent" Source="veryhappy.png"
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="happy" BackgroundColor="Transparent" Source="happy.png"
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="neutral" BackgroundColor="Transparent" Source="neutral.png" 
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="sad" BackgroundColor="Transparent" Source="sad.png" 
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="frightened" BackgroundColor="Transparent" Source="frightened.png"
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="angry" BackgroundColor="Transparent" Source="angry.png" 
+                         Clicked="OnImageButtonClicked"/>
+            <ImageButton VerticalOptions="StartAndExpand" HorizontalOptions="Center" HeightRequest="60" WidthRequest="60" ClassId="thinking" BackgroundColor="Transparent" Source="thinking.png" 
+                         Clicked="OnImageButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
