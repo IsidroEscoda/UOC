@@ -1,0 +1,178 @@
+﻿[
+  // Cognitive
+  {
+    "Id": "C1",
+    "Type": 0,
+    "Statement": "¿Cuántas personas trabajan en tu departamento o empresa?",
+    "TimeInSeconds": 60,
+    "Hint": "Puedes consultar algún documento, web, aplicativo o preguntar a alguien.",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C2",
+    "Type": 0,
+    "Statement": "Escribe el título de tu película favorita y di lo que más te gusta.",
+    "TimeInSeconds": 120,
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C3",
+    "Type": 0,
+    "Statement": "¿Cuál es el animal que es dos veces animal?",
+    "TimeInSeconds": 30,
+    "Hint": "Araña es uno de los animales.",
+    "Solution": "El gato, porque es gato y araña",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C4",
+    "Type": 0,
+    "Statement": "¿Qué animal camina a 4 patas al nacer, 2 en la edad adulta y 3 en la vejez?",
+    "TimeInSeconds": 30,
+    "Hint": "La tercera pata de la vejez es un bastón.",
+    "Solution": "Ser humano",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C5",
+    "Type": 0,
+    "Statement": "Suma cada número de la fecha de cumpleaños de los miembros de tu familia hasta que te quede una sola cifra. Cuando tengas una sola cifra de cada uno de los cumpleaños de tu familia, súmalas entre ellas hasta que vuelvas a tener una sola cifra.",
+    "TimeInSeconds": 60,
+    "Hint": "El resultado sólo puede estar entre 1 y 9.",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C6",
+    "Type": 0,
+    "Statement": "Todos pasan por mí, yo nunca paso por nadie. Todos preguntan por mí, yo nunca pregunto por nadie.",
+    "TimeInSeconds": 30,
+    "Hint": "¿Dónde vives?",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C7",
+    "Type": 0,
+    "Statement": "Haz (mentalmente), lo más rápido que puedas, la lista de la compra de esta semana, acordándote de las marcas y la cantidad de productos que quieres comprar. Mínimo 15 cosas.",
+    "TimeInSeconds": 60,
+    "Hint": "Acuérdate de comprar productos de cada categoría alimentaria, salvo si no eres carnívoro (verduras, frutas, carne, pescado, legumbres, etc.).",
+    "PointsWithHint": 5
+  },
+  {
+    "Id": "C8",
+    "Type": 0,
+    "Statement": "El padre de José le dice a su hijo que le va a dar dos monedas de curso legal. “Entre las dos suman tres euros, pero una de ellas no es de un euro”. ¿Cuáles son las monedas?",
+    "TimeInSeconds": 60,
+    "Hint": "Solo una moneda no puede ser de un euro.",
+    "Solution": "Una de dos euros y otra de un euro. El padre de Juan le dice a su hijo que una de ellas no es de un euro… pero la otra sí puede serlo.",
+    "PointsWithHint": 5
+  },
+
+
+  // Behavioral
+  {
+    "Id": "B1",
+    "Type": 1,
+    "Statement": "Ve hasta el ascensor más cercano andando hacia atrás con el estilo de Michael Jackson.",
+    "TimeInSeconds": 120
+  },
+  {
+    "Id": "B2",
+    "Type": 1,
+    "Statement": "Ve a la fuente de agua más alejada y tómate dos vasos de agua sin respirar.",
+    "TimeInSeconds": 120
+  },
+  {
+    "Id": "B3",
+    "Type": 1,
+    "Statement": "Agarra una hoja de papel y escribe la frase \"Salamandra perdida. Por favor, si lo ves, llama urgente al (invéntate un número de teléfono)\". A continuación, dibuja una salamandra negra con manchas amarillas, y pega la hoja en la pared donde pasen muchas personas (ej. Maquina de café, fotocopiadora, puerta de entrada).",
+    "TimeInSeconds": 120
+  },
+  {
+    "Id": "B4",
+    "Type": 1,
+    "Statement": "Piensa en alguien que conozcas y no tengas mucha afinidad. Escribe 10 palabras positivas en relación a esa persona.",
+    "Hint": "Si no eres capaz de escribir 10, escribe 5.",
+    "TimeInSeconds": 300
+  },
+  {
+    "Id": "B5",
+    "Type": 1,
+    "Statement": "Ve y vuelve del baño a la pata coja, sin responder a las preguntas de nadie.",
+    "TimeInSeconds": 120,
+    "Hint": "¡Más deprisa!"
+  },
+  {
+    "Id": "B6",
+    "Type": 1,
+    "Statement": "Recorta un folio, ponle un celo y utilízalo de corona.",
+    "TimeInSeconds": 300,
+    "Hint": "Puedes utilizar cualquier papel o tela."
+  },
+  {
+    "Id": "B7",
+    "Type": 1,
+    "Statement": "Ve y vuelve del baño caminando hacia atrás, estilo moon walker (Michael Jackson) sin responder a las preguntas de nadie.",
+    "TimeInSeconds": 120,
+    "Hint": "¡¡¡Venga con gracia!!!"
+  },
+  {
+    "Id": "B8",
+    "Type": 1,
+    "Statement": "Sal a dar un paseo en la misma manzana. Intenta tomarte un tiempo y que sea lo más relajado posible. Céntrate en todas las cosas que experimentas durante este paseo (ej. en como respiras, en las expresiones de la gente, en la sensación térmica (¿Tienes calor? ¿Frío?), cómo te vas sintiendo a medida que paseas, qué escuchas.. En definitiva, ocupa tu mente en el momento actual, para \"absorber\" todo lo que sucede a tu alrededor.",
+    "TimeInSeconds": 600,
+    "Hint": "Si no es posible salir a pasear. Mira una imagen o imagina un lugar placentero para tí."
+  },
+
+
+  // Social
+
+  {
+    "Id": "S1",
+    "Type": 2,
+    "Statement": "Ve a otra planta o lugar del edificio y da 5 vueltas alrededor de otra persona.",
+    "TimeInSeconds": 300,
+    "Hint": "No se habla del radio de las vueltas. Por lo que se pueden dar las vueltas a mucha distancia de la persona y que ésta no se dé cuenta."
+  },
+  {
+    "Id": "S2",
+    "Type": 2,
+    "TimeInSeconds": 300,
+    "Statement": "Busca una persona a la que no conozcas, preséntate y consigue su nombre. Tienes que conseguir que esa persona esté sentada mientras habla contigo."
+  },
+  {
+    "Id": "S3",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Tienes 3 minutos para que alguien te invite a un café/cortado/café con leche, etc."
+  },
+  {
+    "Id": "S4",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Busca una persona a la que no conozcas, preséntate y pídele la hora mirando a tu reloj (o el reloj del móvil) sin dar ninguna más explicación al respecto."
+  },
+  {
+    "Id": "S5",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Busca una persona a la que no conozcas, preséntate y dile una buena característica o virtud de su persona."
+  },
+  {
+    "Id": "S6",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Busca una persona a la que no conozcas, preséntate y cuéntale un chiste."
+  },
+  {
+    "Id": "S7",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Has decidido que te gustaría establecer una relación especial con una persona de género opuesto al tuyo. Con esta intención, dibujarás en una hoja papel un tomate rojo junto un pepino y un corazón y se lo regalarás a la primera persona que veas, sin importar si es o no conocida."
+  },
+  {
+    "Id": "S8",
+    "Type": 2,
+    "TimeInSeconds": 180,
+    "Statement": "Busca una persona/compañero de trabajo con la que haga mucho tiempo con la que no hayas hablado y eniale una foto tuya."
+  }
+]

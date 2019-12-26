@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Mis estadísticas"
              x:Class="DistraidaMente.Views.StadisticsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -62,7 +63,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="20,0,20,0" Margin="10">
+        <StackLayout BackgroundColor="White" Padding="20,0,20,0" Margin="10">
             <Frame CornerRadius="5" Padding="0" BackgroundColor="#73edff" Margin="15,5,15,0" HasShadow="True">
                 <Label FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  HeightRequest="40">
                     <Label.FormattedText>
@@ -70,7 +71,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Número de pruebas realizadas" FontSize="15" />
                                 <Span Text=" " />
-                                <Span Text="33" FontSize="20" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span x:Name="prurea" Text="" FontSize="20" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -83,7 +84,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Número de pruebas saltadas" FontSize="15" />
                                 <Span Text=" " />
-                                <Span Text="33" FontSize="20" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span x:Name="prusal" Text="" FontSize="20" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -96,7 +97,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Número de pistas solicitadas" FontSize="15" />
                                 <Span Text=" " />
-                                <Span Text="33" FontSize="20" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span x:Name="pissol" Text="" FontSize="20" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -109,7 +110,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Número de respuestas acertadas" FontSize="15" />
                                 <Span Text=" " />
-                                <Span Text="33" FontSize="20" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span x:Name="resace" Text="" FontSize="20" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -122,7 +123,7 @@
                             <FormattedString.Spans>
                                 <Span Text="Número de respuestas erróneas" FontSize="15" />
                                 <Span Text=" " />
-                                <Span Text="33" FontSize="20" FontAttributes="Bold" ForegroundColor="White" />
+                                <Span x:Name="reserr" Text="" FontSize="20" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -139,13 +140,14 @@
                     </Grid.ColumnDefinitions>
                     
                     <Label Text="Tipo de pruebas realizadas " HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
-                    <Button x:Name="MyButton" Text="↓" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" FontAttributes="Bold" TextColor="Black" />
+                    <Button x:Name="MyButton" Text="↓" FontSize="20" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" FontAttributes="Bold" TextColor="Black" />
           
                     <StackLayout BackgroundColor="Gray" IsVisible="{Binding LabelVisible}" x:Name="MyContent" Grid.Row="2" Grid.Column="0" >
                         <Label Text="Data from Firebase" HorizontalOptions="Fill"/>
                     </StackLayout>
                 </Grid>
             </Frame>
+            <Picker SelectedIndex="0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

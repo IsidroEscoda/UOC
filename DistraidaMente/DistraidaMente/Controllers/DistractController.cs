@@ -1,7 +1,6 @@
 ﻿using DistraidaMente.Helpers;
-using DistraidaMente.Model;
-using DistraidaMente.Models;
 using DistraidaMente.Views;
+using DistraidaMente.Pages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using DistraidaMente.Common.Pages;
+using System.Collections.ObjectModel;
+using DistraidaMente.Common.Helpers;
+using DistraidaMente.Models;
+using VideoPage = DistraidaMente.Views.VideoPage;
 
 namespace DistraidaMente.Controllers
 {
@@ -17,19 +21,31 @@ namespace DistraidaMente.Controllers
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
         private Configuration _configuration;
-        List<Challenge> _challenges;
         bool FirstTime = true;
 
+        private ObservableCollection<Challenge> getChallenge;
         static object lockObject = new object();
         private List<Challenge> _currentChallenges;
         private int _currentChallengeIndex;
 
-        public  DistractController()
+        List<Challenge> _challenges;
+
+        public static ObservableCollection<Challenge> Challenges { private set; get; }
+        public DistractController()
         {
             _configuration = new Configuration();
+            getChallenge = Challenges;
+            LoadChallenges();
             LoadChallengesAsync();
+
         }
 
+        private void LoadChallenges()
+        {
+            //string content = FilesHelper.ReadEmbeddedFileAsString("DeltaApps.PositiveThings.Text.challenges_" + _configuration.Language + ".json");
+            string content = FilesHelper.ReadEmbeddedFileAsString("DistraidaMente.Text.challenges2_ES.json");
+            _challenges = JsonConvert.DeserializeObject<List<Challenge>>(content);
+        }
         private async Task LoadChallengesAsync()
         {
             var response = await firebaseHelper.GetAllChallenges();
@@ -37,7 +53,19 @@ namespace DistraidaMente.Controllers
             {
                 try
                 {
-                    _challenges.Add(item); // item.value is a Java.Lang.Object
+                    Challenge c = new Challenge()
+                    {
+                        Type = ChallengeType.CreateCustomChallenge,
+                        Id = Guid.NewGuid().ToString(),
+                        Statement = item.Statement,
+                        TimeInSeconds = 300,
+                        Source = ChallengeSource.Custom,
+                    };
+                    _challenges.Add(c);
+                    /*_challenges.Add(new Challenge()
+                    {
+                        Statement = item.Name
+                    });*/
                 }
                 catch (Exception ex)
                 {
@@ -48,11 +76,6 @@ namespace DistraidaMente.Controllers
 
         public void StartProcess()
         {
-            /*if (_configuration.FirstLaunch)
-            {
-                _configuration.FirstLaunch = false;
-            }*/
-
             PrepareSessionData();
         }
 
@@ -82,18 +105,35 @@ namespace DistraidaMente.Controllers
             }
             else
             {
-                    var person = firebaseHelper.GetPersonDocId(_configuration.UserId);
-             
-                   if (_configuration.VideoSaw == null)
-                    {
-                        _configuration.VideoSaw = "false";
-                    
-                        ShowVideo();
-                    }
-                    else
-                    {
-                        ShowFirstEmoticonsPage();
-                    }
+
+                //GetUserVideoAsync();
+
+
+                //var response = await firebaseHelper.GetPersonDocId(docId);
+                if (_configuration.VideoSaw == null)
+                {
+                    ShowVideo();
+                    _configuration.VideoSaw = "true";
+                }
+                else
+                {
+                    ShowFirstEmoticonsPage();
+                }
+            }
+        }
+
+        private async Task GetUserVideoAsync()
+        {
+            var itemsonline = firebaseHelper.GetPersonDocId("DOC002P2");
+
+            var retornodoservidor = await itemsonline;
+            if (retornodoservidor.Video)
+            {
+                ShowFirstEmoticonsPage();
+            }
+            else
+            {
+                ShowVideo();
             }
         }
 
@@ -109,54 +149,5 @@ namespace DistraidaMente.Controllers
             MainPage emoticonsPage = new MainPage();
             Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = emoticonsPage; });
         }
-
-        private void ShowChallengePage(ChallengeType challengeType)
-        {
-            bool startChallenge = _currentChallenges == null;
-
-            if (_currentChallenges == null)
-            {
-                _currentChallenges = ChooseChallenges(challengeType);
-                _currentChallengeIndex = 0;
-            }
-            else
-            {
-                _currentChallengeIndex = (_currentChallengeIndex + 1) % 3;
-            }
-
-            bool showMessageIfSkipChallenge = _currentChallengeIndex == 2;
-
-            var challenge = _currentChallenges[_currentChallengeIndex];
-
-            ShowChallengePage(challenge, startChallenge, showMessageIfSkipChallenge);
-        }
-
-        private void ShowChallengePage(Challenge challenge, bool startChallenge, bool showMessageIfSkipChallenge, bool showActionButtons = true)
-        {
-            int points = int.Parse(_configuration.ReadProperty("Points") ?? "0");
-
-            ChallengePage challengePage = new ChallengePage(_configuration, challenge, points, showMessageIfSkipChallenge, showActionButtons);
-
-            Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = challengePage; });
-
-        }
-
-        private List<Challenge> ChooseChallenges(ChallengeType challengeType)
-        {
-            List<Challenge> chosen = new List<Challenge>();
-
-            /*var completed = _challenges.Where(x => (x.Type == challengeType || x.Type == ChallengeType.CreateCustomChallenge) && x.Completed).Randomize();
-            var notcompleted = _challenges.Where(x => (x.Type == challengeType || x.Type == ChallengeType.CreateCustomChallenge) && !x.Completed).Randomize();
-
-            chosen.AddRange(notcompleted.Take(3));
-
-            if (chosen.Count < 3)
-            {
-                chosen.AddRange(completed.Take(3 - chosen.Count));
-            }*/
-
-            return chosen;
-        }
-
     }
 }

@@ -27,7 +27,15 @@ namespace DistraidaMente.Views
 			codeButton.Clicked += OnLoginButtonClicked;
 		}
 
-		async void OnLoginButtonClicked(object sender, EventArgs e)
+        public LoginPage(Configuration configuration)
+        {
+            _configuration = configuration;
+            InitializeComponent();
+
+            codeButton.Clicked += OnLoginButtonClicked;
+        }
+
+        async void OnLoginButtonClicked(object sender, EventArgs e)
         {
 
             var isValid = false;
@@ -44,10 +52,7 @@ namespace DistraidaMente.Views
             }
             else
             {
-                string pattern = @"^[a-zA-Z]{3}\d{3}$";
-                //string pattern2 = "[A-Z]{3}[0-9]{3}[A-Z][\d-]+$";
-                //await firebaseHelper.AddPerson(Convert.ToInt32(codeEntry.Text.Substring(7)), nameEntry.Text.ToUpper(), codeEntry.Text.ToUpper());
-                //await DisplayAlert("Success", "Person Added Successfully to FireBase", "OK");
+                /*string pattern = @"^[a-zA-Z]{3}\d{3}$";
 
                 if (Regex.IsMatch(code_Input, pattern, RegexOptions.IgnoreCase))
                 {
@@ -62,16 +67,17 @@ namespace DistraidaMente.Views
                 else
                 {
                     DisplayAlert("Cuidado", "Entra un código válido o consulte con su médico", "ok");
-                }
+                }*/
+                await firebaseHelper.AddPerson(Convert.ToInt32(codeEntry.Text.Substring(7)), nameEntry.Text.ToUpper(), codeEntry.Text.ToUpper(), false);
 
+                _configuration.SaveProperty("name", name_Input);
+                _configuration.SaveProperty("docId", code_Input);
+                CheckCode(codeEntry.Text);
+
+                codeEntry.Text = string.Empty;
+                nameEntry.Text = string.Empty;
 
             }
-
-			if (isValid)
-			{
-                //await firebaseHelper.AddPerson(Convert.ToInt32(codeEntry.Text.Substring(7)), nameEntry.Text.ToUpper(), codeEntry.Text.ToUpper());
-                //await DisplayAlert("Success", "Person Added Successfully to FireBase", "OK");
-			}
 		}
 
         private void CheckCode(string text)
@@ -84,7 +90,7 @@ namespace DistraidaMente.Views
             }
             else
             {
-                firebaseHelper.AddPerson(Convert.ToInt32(codeEntry.Text.Substring(7)), nameEntry.Text.ToUpper());
+                //await firebaseHelper.AddPerson(Convert.ToInt32(codeEntry.Text.Substring(7)), nameEntry.Text.ToUpper());
                 //await DisplayAlert("Success", "Person Added Successfully to FireBase", "OK");
             }
         }

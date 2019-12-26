@@ -7,14 +7,12 @@
              x:Class="DistraidaMente.Views.VideoPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Video Page source failed!"
+            <Label Text="Xamarin Video Source error"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ImageButton Source="close.png"
+            <ImageButton Source="close.png" Clicked="OnCloseVideo"
                     HorizontalOptions="Center"
-                    VerticalOptions="CenterAndExpand"
-                    Clicked="CloseVideo" />
-
+                    VerticalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

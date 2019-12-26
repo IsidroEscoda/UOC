@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DistraidaMente.Model
+namespace DistraidaMente.Models
 {
     public class Challenge
     {

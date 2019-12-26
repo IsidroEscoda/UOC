@@ -23,8 +23,8 @@ namespace DistraidaMente.Views
         {
 
             base.OnAppearing();
-            //var allRankings = await firebaseHelper.GetRankings();
-            //lstRankings.ItemsSource = allRankings;
+            var allRankings = await firebaseHelper.GetRankings();
+            lstRankings.ItemsSource = allRankings;
         }
     }
 }

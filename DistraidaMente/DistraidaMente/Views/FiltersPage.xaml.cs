@@ -19,20 +19,6 @@ namespace DistraidaMente.Views
             _configuration = new Configuration();
 
             InitializeComponent();
-
-            ignoreToogledEvent = true;
-
-            switch1.IsToggled = _configuration.ReadBoolProperty("personal");
-            switch2.IsToggled = _configuration.ReadBoolProperty("acertijos");
-            switch3.IsToggled = _configuration.ReadBoolProperty("enigmas");
-            switch4.IsToggled = _configuration.ReadBoolProperty("diferencias");
-            switch5.IsToggled = _configuration.ReadBoolProperty("sopas");
-            switch6.IsToggled = _configuration.ReadBoolProperty("relacionarme");
-            switch7.IsToggled = _configuration.ReadBoolProperty("moverme");
-            switch8.IsToggled = _configuration.ReadBoolProperty("musica");
-            switch9.IsToggled = _configuration.ReadBoolProperty("relax");
-
-            ignoreToogledEvent = false;
         }
         bool ignoreToogledEvent;
 
@@ -53,6 +39,36 @@ namespace DistraidaMente.Views
             //DisplayAlert("Success", String.Format("Switch is now {0} {1}", classId, e.Value), "OK");
             /*Application.Current.Properties.Add(String.Format("{0}", classId), String.Format("{0}", e.Value));
             Application.Current.SavePropertiesAsync();*/
+        }
+
+        protected async override void OnAppearing()
+        {
+
+            base.OnAppearing();
+
+            try
+            {
+                base.OnAppearing();
+
+                ignoreToogledEvent = true;
+
+                switch1.IsToggled = _configuration.ReadBoolProperty("personal");
+                switch2.IsToggled = _configuration.ReadBoolProperty("acertijos");
+                switch3.IsToggled = _configuration.ReadBoolProperty("enigmas");
+                switch4.IsToggled = _configuration.ReadBoolProperty("diferencias");
+                switch5.IsToggled = _configuration.ReadBoolProperty("sopas");
+                switch6.IsToggled = _configuration.ReadBoolProperty("relacionarme");
+                switch7.IsToggled = _configuration.ReadBoolProperty("moverme");
+                switch8.IsToggled = _configuration.ReadBoolProperty("musica");
+                switch9.IsToggled = _configuration.ReadBoolProperty("relax");
+
+                ignoreToogledEvent = false;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("OnAppearing  Additional information..." + ex, ex);
+            }
         }
     }
 }

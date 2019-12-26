@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout>
+    <StackLayout BackgroundColor="White">
         <Grid Padding="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -33,11 +33,11 @@
             <Switch x:Name="switch11" Toggled="OnToggled" Grid.Row="1" ClassId="relacionarme" Grid.Column="1" HorizontalOptions="Center"></Switch>
                 <Label Grid.Row="1" Grid.Column="0" Text="Quiero relacionarme" VerticalOptions="Center"/>
             </Grid>
-            <Button x:Name="buttonStart" Text="COMENZAR" Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
+            <Button Margin="20" x:Name="buttonStart" Text="COMENZAR" Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
                         BackgroundColor="{StaticResource Azulclaro}"
                         TextColor="White"/>
             <Label Text="Pulsa aquí para que te aparezcan las pruebas" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-        <ListView x:Name="lstChallenges">
+        <ListView x:Name="lstChallenges" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

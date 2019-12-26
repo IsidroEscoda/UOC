@@ -1,4 +1,6 @@
 ﻿using DistraidaMente.Model;
+using DistraidaMente.Models;
+using DistraidaMente.ViewModels;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Newtonsoft.Json;
@@ -31,16 +33,48 @@ namespace DistraidaMente.Helpers
 
         }
 
+        public async Task<List<InfoClassModel>> GetInfo()
+        {
+            return (await firebase
+              .Child("PositiveThings/Info")
+              .OnceAsync<InfoClassModel>()).Select(item => new InfoClassModel
+              {
+                  Icon = item.Object.Icon,
+                  Name = item.Object.Name,
+                  Description = item.Object.Description
+              }).ToList();
+
+        }
+
+        public async Task<List<Ranking>> GetRankings()
+        {
+
+            return (await firebase
+              .Child("PositiveThings/Ranking")
+              .OnceAsync<Ranking>()).Select(item => new Ranking
+              {
+                  Name = item.Object.Name,
+                  Position = item.Object.Position,
+                  Points = item.Object.Points,
+                  DocId = item.Object.DocId
+              }).OrderByDescending(w => w.Points).ToList();
+        }
 
         public async Task<List<Person>> GetAllPersons()
         {
-
             return (await firebase
               .Child("Persons")
               .OnceAsync<Person>()).Select(item => new Person
               {
+                  DocId = item.Object.DocId,
+                  Video = item.Object.Video,
                   Name = item.Object.Name,
-                  PersonId = item.Object.PersonId
+                  PersonId = item.Object.PersonId,
+                  PruRea = item.Object.PruRea,
+                  PisSol = item.Object.PisSol,
+                  PruSal = item.Object.PruSal,
+                  ResAce = item.Object.ResAce,
+                  ResErr = item.Object.ResErr
               }).ToList();
         }
 
@@ -53,6 +87,29 @@ namespace DistraidaMente.Helpers
         }
 
 
+        public async Task AddPerson(int personId, string name, string docId, bool sawIt)
+        {
+            var toUpdatePerson = (await firebase
+               .Child("Persons")
+               .OnceAsync<Person>()).Where(a => a.Object.DocId == docId).FirstOrDefault();
+
+            if (toUpdatePerson != null)
+            {
+                await firebase
+              .Child("Persons")
+              .Child(toUpdatePerson.Key)
+              .PutAsync(new Person() { PersonId = personId, Name = name, DocId = docId, Video = sawIt });
+            }
+            else
+            {
+                await firebase
+              .Child("Persons")
+              .PostAsync(new Person() { PersonId = personId, Name = name, DocId = docId, Video = sawIt });
+            }
+
+        }
+
+
         public async Task<Person> GetPersonDocId(string docId)
         {
             var allPersons = await GetAllPersons();
@@ -60,6 +117,7 @@ namespace DistraidaMente.Helpers
               .Child("Persons")
               .OnceAsync<Person>();
             return allPersons.Where(a => a.DocId == docId).FirstOrDefault();
+            
         }
 
         public async Task<Person> GetPerson(int personId)
@@ -90,6 +148,14 @@ namespace DistraidaMente.Helpers
               .OnceAsync<Person>()).Where(a => a.Object.PersonId == personId).FirstOrDefault();
             await firebase.Child("Persons").Child(toDeletePerson.Key).DeleteAsync();
 
+        }
+
+        public class Ranking
+        {
+            public string Name { get; set; }
+            public string DocId { get; set; }
+            public int Position { get; set; }
+            public int Points { get; set; }
         }
     }
 

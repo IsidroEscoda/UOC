@@ -6,6 +6,21 @@
              mc:Ignorable="d"
              x:Class="DistraidaMente.App">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="Black"></Setter>
+                <Setter Property="BarTextColor" Value="Violet"></Setter>
+            </Style>
+            <Style x:Key="pageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#484559</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White" />
+                <Setter Property="BarTextColor" Value="Gray" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="DistraidaMente.Views.RankingPage">
     <ContentPage.Content>
-        <StackLayout Padding="20">
+        <StackLayout BackgroundColor="White" Padding="20">
             <!--<ListView x:Name="lstPersons">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -14,18 +14,18 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
-            <Grid BackgroundColor="LightSkyBlue" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="0">
+            <Grid BackgroundColor="#73edff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
-                <Label Grid.Column="0" HorizontalTextAlignment="Center" Font="Bold,16" Text="Posición" />
-                <Label Grid.Column="1" HorizontalTextAlignment="Center" Font="Bold,16" Text="Usuario" />
-                <Label Grid.Column="2" HorizontalTextAlignment="Center" Font="Bold,16" Text="Puntos" />
+                <Label Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Posición" />
+                <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Usuario" />
+                <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Puntos" />
             </Grid>
             <ListView x:Name="lstRankings" HasUnevenRows="true" HeightRequest="200" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
