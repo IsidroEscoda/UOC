@@ -26,7 +26,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Text="Pista" BackgroundColor="#000078" TextColor="White"
+                <Button x:Name="hintBtn" Grid.Column="0" Text="Pista" BackgroundColor="#000078" TextColor="White"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Start"/>
                 <Button Grid.Column="1" Text="Saltar prueba" BackgroundColor="#000078" TextColor="White"

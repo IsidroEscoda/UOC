@@ -107,9 +107,9 @@ namespace DistraidaMente.Controllers
             {
 
                 //GetUserVideoAsync();
-
-
-                //var response = await firebaseHelper.GetPersonDocId(docId);
+                //Console.WriteLine(ShowVideoPerson(_configuration.ReadProperty("docId")).Result);
+                
+                //var response = firebaseHelper.GetPersonDocId(_configuration.ReadProperty("docId")).Result;
                 if (_configuration.VideoSaw == null)
                 {
                     ShowVideo();
@@ -121,20 +121,42 @@ namespace DistraidaMente.Controllers
                 }
             }
         }
-
-        private async Task GetUserVideoAsync()
+        private async Task<bool> ShowVideoPerson(string docId)
         {
-            var itemsonline = firebaseHelper.GetPersonDocId("DOC002P2");
+            try
+            {
+                var itemsonline = await firebaseHelper.GetPersonDocId(docId);
+                bool video = itemsonline.Video;
+                return video;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+        }
 
-            var retornodoservidor = await itemsonline;
-            if (retornodoservidor.Video)
-            {
-                ShowFirstEmoticonsPage();
-            }
+        private static async Task<string> ShowTodaysInfo()
+        {
+            string ret = $"Today is {DateTime.Today:D}\n" +
+                         "Today's hours of leisure: " +
+                         $"{await GetLeisureHours()}";
+            return ret;
+        }
+
+        static async Task<int> GetLeisureHours()
+        {
+            // Task.FromResult is a placeholder for actual work that returns a string.  
+            var today = await Task.FromResult<string>(DateTime.Now.DayOfWeek.ToString());
+
+            // The method then can process the result in some way.  
+            int leisureHours;
+            if (today.First() == 'S')
+                leisureHours = 16;
             else
-            {
-                ShowVideo();
-            }
+                leisureHours = 5;
+
+            return leisureHours;
         }
 
         private void ShowVideo()

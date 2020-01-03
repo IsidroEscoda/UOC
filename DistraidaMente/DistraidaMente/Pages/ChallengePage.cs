@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
+using Configuration = DistraidaMente.Controllers.Configuration;
 
 namespace DistraidaMente.Pages
 {
@@ -753,7 +754,7 @@ namespace DistraidaMente.Pages
 
         private void UpdateClock()
         {
-            Device.BeginInvokeOnMainThread(() => _clockLabel.Text = $"{_countDown / 60:00}:{_countDown % 60:00}");
+            //Device.BeginInvokeOnMainThread(() => _clockLabel.Text = $"{_countDown / 60:00}:{_countDown % 60:00}");
         }
 
         private void TimeElapsed()

@@ -4,7 +4,7 @@ using System.Globalization;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveApps.Common.Model
+namespace DistraidaMente.Common.Model
 {
     public class Configuration
     {

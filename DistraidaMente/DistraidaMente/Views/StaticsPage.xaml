@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="DeltaApps.PositiveThings.Views.StaticPage"
+			 Title="Mis estadísticas" BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+
+        <!--  Application resource dictionary  -->
+        <ResourceDictionary>
+            <!--  colors  -->
+            <Color x:Key="HeaderTextColor">#585858</Color>
+            <Color x:Key="BodyTextColor">#C3C3C3</Color>
+            <Color x:Key="ButtonBackgroundColor">#5992FF</Color>
+            <Color x:Key="BackgroundColor">White</Color>
+            <Color x:Key="AzulClaro">#73edff</Color>
+            <Color x:Key="AzulOscuro">#000078</Color>
+
+            <!--  font families  -->
+            <OnPlatform x:Key="RegularFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue</On>
+                <On Platform="Android">sans-serif</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="LightFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Light</On>
+                <On Platform="Android">sans-serif-light</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="MediumFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Medium</On>
+                <On Platform="Android">sans-serif-medium</On>
+            </OnPlatform>
+
+            <!--  font sizes  -->
+            <x:Double x:Key="TitleFontSize">20</x:Double>
+            <x:Double x:Key="BodyFontSize">18</x:Double>
+            <x:Double x:Key="TagTextFontSize">18</x:Double>
+            <x:Double x:Key="StatsNumberFontSize">20</x:Double>
+            <x:Double x:Key="StatsCaptionFontSize">16</x:Double>
+            <x:Double x:Key="ButtonFontSize">14</x:Double>
+
+            <!--  styles  -->
+            <Style x:Key="ProfileStaticFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource AzulClaro}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="10" HorizontalOptions="CenterAndExpand">
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Número de pruebas realizadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="prurea" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Número de pruebas saltadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="prusal" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Número de pistas solicitadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="pissol" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Número de respuestas acertadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="resace" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Número de respuestas erróneas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="reserr" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Grid.Row="1">
+                        <Label FontSize="18" Grid.Column="0" Text="Tipo de pruebas realizadas " HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" />
+                        <Button FontSize="22" Grid.Column="1" x:Name="MyButton" Text="↓" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" FontAttributes="Bold" TextColor="Black" />
+                    </StackLayout>
+                    <StackLayout Grid.RowSpan="2" HeightRequest="100" IsVisible="{Binding LabelVisible}" x:Name="MyContent" Grid.Row="2" Grid.Column="0" >
+                        <ListView>
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                  <x:String>Adivinanzas</x:String>
+                                  <x:String>Sociales</x:String>
+                                  <x:String>Personales</x:String>
+                                  <x:String>Música</x:String>
+                                  <x:String>Relajación</x:String>
+                                  <x:String>Sopas</x:String>
+                                  <x:String>Diferencias</x:String>
+                                </x:Array>
+                            </ListView.ItemsSource>
+                        </ListView>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

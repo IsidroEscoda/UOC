@@ -33,6 +33,15 @@ namespace DistraidaMente.Helpers
 
         }
 
+        public async Task<Person> GetPersonVideo(string docId)
+        {
+            var allPersons = await GetAllPersons();
+            await firebase
+              .Child("Persons")
+              .OnceAsync<Person>();
+            return allPersons.Where(a => a.DocId == docId && a.Video == true).FirstOrDefault();
+        }
+
         public async Task<List<InfoClassModel>> GetInfo()
         {
             return (await firebase

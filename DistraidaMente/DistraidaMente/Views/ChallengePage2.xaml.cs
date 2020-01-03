@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Rg.Plugins.Popup.Services;
-using System.Threading.Tasks;
 using DistraidaMente.ViewModels;
 using System.Timers;
 
@@ -39,10 +37,45 @@ namespace DistraidaMente.Views
         {
             InitializeComponent();
 
+            StackLayout contentLayout = new StackLayout()
+            {
+                Padding = new Thickness(20, 100),
+                VerticalOptions = LayoutOptions.Start,
+            };
+
+            Dialog _dialog = new Dialog(new Size(300, 300))
+            {
+                Content = new Label()
+                {
+                    Text = "Código incorrecto. Vuelva a intentarlo o comuníquese con el organizador.",
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    LineBreakMode = LineBreakMode.WordWrap,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    MaxLines = 10,
+                },
+                DialogBackgroundColor = Color.Red,
+                DialogSize = new Size(300, 300),
+                DialogHeight = 300,
+            };
+
+            contentLayout.Children.Add(_dialog);
+
             var item = new Challenge { Statement = "¿Cuántas personas trabajan en tu departamento o empresa?", TimeInSeconds = 60};
             viewModel = new ChallengeViewModel(item);
             BindingContext = viewModel;
             StartTimer(mins, counter);
+
+
+            hintBtn.Clicked += (s, e) => {
+
+                //var alert = new AlertDialog.Builder(this);
+                //alert.SetView(LayoutInflater.Inflate(Resource.Layout.liteWarning, null));
+
+                Dialog dialog = new Dialog(new Size(App.ScreenWidth - 30, 540));
+                dialog.Show();
+            };
         }
         protected override void OnAppearing()
         {
@@ -172,9 +205,11 @@ namespace DistraidaMente.Views
         {
             _clockLabel.Text = "STOP";
         }
+
         private async void Hint(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new PopUp());
+            ///await PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PushAsync(new PopUp(), false);
         }
         void NextChallenge(object sender, EventArgs e)
         {

@@ -4,60 +4,72 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="DistraidaMente.Views.AboutPage"
-             xmlns:vm="clr-namespace:DistraidaMente.ViewModels"
-             Title="{Binding Title}">
+             NavigationPage.HasNavigationBar="false"
+             x:Class="DeltaApps.PositiveThings.Views.AboutPage" BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+            <Color x:Key="Azulclaro">#73edff</Color>
+            <Color x:Key="Azuloscuro">#000078</Color>
+            <Color x:Key="Gris">#8e8e93</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Padding="25">
-            <ListView Grid.Row="1" Margin="5,5,5,5"  Footer="" x:Name="MyListView"
+        <StackLayout Padding="25" Margin="0,30,0,0">
+            <ListView Grid.Row="1"  Margin="5,15,5,25"  Footer="" x:Name="MyListView"
             GroupDisplayBinding="{Binding Title}"
                HasUnevenRows="true"
              SeparatorVisibility="None"
             IsGroupingEnabled="true">
-                <ListView.ItemTemplate> 
-                    <DataTemplate>
-                        <ViewCell Height="150">
-                            <Frame Margin="5" CornerRadius="0" HasShadow="false" Padding="5">
-                                <ScrollView>
-                                    <StackLayout>
-                                        <Label TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
-                                    </StackLayout>
-                                </ScrollView>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.GroupHeaderTemplate>
-                    <DataTemplate>
-                        <ViewCell Height="50">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame  BorderColor="#e6e6e6" CornerRadius="0" HasShadow="false" Padding="10,10,10,10">
+                                        <ScrollView>
+                                            <StackLayout>
+                                                <Label TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="50">
 
-                            <Frame HasShadow="false" Margin="0,5,0,0" BackgroundColor="#73edff" CornerRadius="0" Padding="10" >
-                                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                                    <Label Text="{Binding Title}" 
-                            VerticalTextAlignment="Center"
-                             TextColor="#fff"
-                             VerticalOptions="CenterAndExpand"/>
-                                    <Button HorizontalOptions="EndAndExpand" Image="{Binding StateIcon}"
-                              VerticalOptions="CenterAndExpand"
-                              BackgroundColor="Transparent"
-                              BorderColor="Transparent"
-                              BorderWidth="0"
-                              Clicked="HeaderTapped" 
-                              CommandParameter="{Binding .}"/>
-                                </StackLayout>
-                            </Frame>
+                                    <Frame HasShadow="false" BackgroundColor="{StaticResource Azulclaro}" CornerRadius="0" Padding="10,0,10,0" >
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                                                    <Label Text="{Binding Title}" FontSize="17"
+                                                        VerticalTextAlignment="Center"
+                                                         TextColor="Black"
+                                                         VerticalOptions="CenterAndExpand"/>
+                                                    <Button HorizontalOptions="EndAndExpand" Image="{Binding StateIcon}"
+                                                          VerticalOptions="CenterAndExpand"
+                                                          BackgroundColor="Transparent"
+                                                          BorderColor="Transparent"
+                                                          BorderWidth="0"
+                                                          Clicked="HeaderTapped" 
+                                                          CommandParameter="{Binding .}"/>
+                                        </StackLayout>
+                                    </Frame>
 
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.GroupHeaderTemplate>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.GroupHeaderTemplate>
             </ListView>
             <StackLayout Padding="25">
-                <Button Text="VIDEO" Clicked="OpenVideoCommand" VerticalOptions="EndAndExpand" 
-                        BackgroundColor="BLue"
+                <Button FontSize="Large" Text="VIDEO" Clicked="OpenVideoCommand" VerticalOptions="EndAndExpand" 
+                        BackgroundColor="{StaticResource Azuloscuro}"
                         TextColor="White"/>
                 <Label Text="Pulsa aquí para ver un video explicativo" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
             </StackLayout>
         </StackLayout>
-
+        
     </ContentPage.Content>
+
 </ContentPage>

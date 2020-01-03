@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Octane.Xamarin.Forms.VideoPlayer.iOS;
 using UIKit;
 
 namespace DistraidaMente.iOS
@@ -23,6 +24,14 @@ namespace DistraidaMente.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            FormsVideoPlayer.Init();
+
+            //CommonLibrary.iOS.CommonLibrary.Init();
+
+            App.ScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            App.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

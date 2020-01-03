@@ -1,37 +1,35 @@
-﻿using DistraidaMente.Controllers;
+﻿using DeltaApps.PositiveApps.Common.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-namespace DistraidaMente.Views
+namespace DeltaApps.PositiveThings.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+	public partial class ProfilePage : ContentPage
     {
         private Configuration _configuration;
-        public ProfilePage()
+
+        public ProfilePage ()
         {
-            _configuration = new Configuration();
+            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+
+
             InitializeComponent();
             label_name.Text = _configuration.ReadProperty("name");
+            NavigationPage.SetBackButtonTitle(this, "");
         }
 
-        async void OnFiltersClicked(object sender, EventArgs e)
+		async void OnUpcomingAppointmentsButtonClicked2 (object sender, EventArgs e)
+		{
+			await Navigation.PushAsync (new FiltersPage ());
+		}
+        async void OnUpcomingAppointmentsButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FiltersPage());
+            await Navigation.PushAsync(new StaticPage(_configuration.ReadProperty("docId")));
         }
-        async void OnStatsClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new StadisticsPage());
-        }
-        async void OnNotificationsClicked(object sender, EventArgs e)
+        async void OnUpcomingAppointmentsButtonClicked3(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NotificationsPage());
         }
     }
 }
+

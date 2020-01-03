@@ -1,19 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="DistraidaMente.Views.RankingPage">
+             NavigationPage.HasNavigationBar="false"
+             x:Class="DeltaApps.PositiveThings.Views.RankingPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Padding="20">
-            <!--<ListView x:Name="lstPersons">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
+        <StackLayout Padding="20" Margin="0,30,0,0">
             <Grid BackgroundColor="#73edff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -21,28 +12,26 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30" />
+                    <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
-                <Label Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Posición" />
-                <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Usuario" />
-                <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" Font="Bold,16" Text="Puntos" />
+                <Label Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black" Font="Bold,16" Text="Posición" />
+                <Label Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black" Font="Bold,16" Text="Usuario" />
+                <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black" Font="Bold,16" Text="Puntos" />
             </Grid>
-            <ListView x:Name="lstRankings" HasUnevenRows="true" HeightRequest="200" SeparatorVisibility="None">
+            <ListView SeparatorVisibility="None" x:Name="lstRankings">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ViewCell.View>
-                                <Grid Margin="0" Padding="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label HorizontalTextAlignment="Center" Grid.Column="0" Margin="0" Text="{Binding DocId}" />
-                                    <Label HorizontalTextAlignment="Center" Grid.Column="1" Margin="0" Text="{Binding Name}" />
-                                    <Label HorizontalTextAlignment="Center" Grid.Column="2" Margin="0" Text="{Binding Points}" />
-                                </Grid>
-                            </ViewCell.View>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label HorizontalTextAlignment="Center" Text="-" />
+                                <Label HorizontalTextAlignment="Center" Grid.Column="1" Text="{Binding DocId}" />
+                                <Label HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding Points}" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

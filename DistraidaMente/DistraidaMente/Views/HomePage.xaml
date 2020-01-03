@@ -1,10 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="DistraidaMente.Views.HomePage">
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+			 x:Class="DeltaApps.PositiveThings.Views.HomePage" BackgroundColor="White">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
@@ -16,39 +15,40 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout BackgroundColor="White">
-        <Grid Padding="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="80"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+    <StackLayout Margin="0,30,0,0">
+        <Grid Padding="20" Margin="0,20" VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Switch x:Name="switch10" Grid.Row="0" Toggled="OnToggled" ClassId="moverme" Grid.Column="1" HorizontalOptions="EndAndExpand"></Switch>
+            <Label Grid.Row="0" Grid.Column="0" Text="Quiero moverme" VerticalOptions="Center"/>
 
-            <Switch x:Name="switch10" Toggled="OnToggled" Grid.Row="0" ClassId="moverme" Grid.Column="1" HorizontalOptions="Center"></Switch>
-                <Label Grid.Row="0" Grid.Column="0" Text="Quiero moverme" VerticalOptions="Center"/>
+            <Switch x:Name="switch11" Grid.Row="1" Toggled="OnToggled" ClassId="relacionarme" Grid.Column="1" HorizontalOptions="End"></Switch>
+            <Label Grid.Row="1" Grid.Column="0" Text="Quiero relacionarme" VerticalOptions="Center"/>
+        </Grid>
 
-            <Switch x:Name="switch11" Toggled="OnToggled" Grid.Row="1" ClassId="relacionarme" Grid.Column="1" HorizontalOptions="Center"></Switch>
-                <Label Grid.Row="1" Grid.Column="0" Text="Quiero relacionarme" VerticalOptions="Center"/>
-            </Grid>
-            <Button Margin="20" x:Name="buttonStart" Text="COMENZAR" Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
-                        BackgroundColor="{StaticResource Azulclaro}"
-                        TextColor="White"/>
+            <ListView x:Name="lstChallenges">  
+                    <ListView.ItemTemplate>  
+                        <DataTemplate>  
+                            <TextCell Text="{Binding Statement}"></TextCell>  
+                        </DataTemplate>  
+                    </ListView.ItemTemplate>  
+                </ListView> 
+        <StackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator x:Name="activity"  
+                    IsRunning="False"  
+                    IsEnabled="False"  
+                    IsVisible="False"  
+                    Color="Blue"  
+                    BackgroundColor="Transparent"/> 
+            <Button  Margin="0,20" FontSize="Large" Text="COMENZAR"  Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
+                        BackgroundColor="{StaticResource Azulclaro}"/>
             <Label Text="Pulsa aquí para que te aparezcan las pruebas" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-        <ListView x:Name="lstChallenges" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Label Text="{Binding Statement}" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Text="{Binding Id}" />
-                            <Label Grid.Column="2" Text="{Binding Hint}" HorizontalTextAlignment="End" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        </StackLayout> 
     </StackLayout>
 </ContentPage>

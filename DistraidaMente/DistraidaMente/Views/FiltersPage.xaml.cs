@@ -1,31 +1,25 @@
-﻿using DistraidaMente.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-namespace DistraidaMente.Views
+namespace DeltaApps.PositiveThings.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FiltersPage : ContentPage
+	public partial class FiltersPage : ContentPage
     {
-        Configuration _configuration;
-        public FiltersPage()
-        {
-            _configuration = new Configuration();
+        DeltaApps.PositiveApps.Common.Model.Configuration _configuration;
 
-            InitializeComponent();
+        public FiltersPage()
+		{
+            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+
+			InitializeComponent ();
         }
+
         bool ignoreToogledEvent;
 
-        async void OnBackButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
+        async void OnBackButtonClicked (object sender, EventArgs e)
+		{
+			await Navigation.PopAsync ();
+		}
 
         void OnToggled(object sender, ToggledEventArgs e)
         {
@@ -43,13 +37,10 @@ namespace DistraidaMente.Views
 
         protected async override void OnAppearing()
         {
-
             base.OnAppearing();
-
+            // Do your thing
             try
             {
-                base.OnAppearing();
-
                 ignoreToogledEvent = true;
 
                 switch1.IsToggled = _configuration.ReadBoolProperty("personal");
@@ -64,11 +55,11 @@ namespace DistraidaMente.Views
 
                 ignoreToogledEvent = false;
             }
-
             catch (Exception ex)
             {
-                throw new Exception("OnAppearing  Additional information..." + ex, ex);
+                throw new Exception("OnAppearing Additional information..." + ex, ex);
             }
         }
     }
 }
+

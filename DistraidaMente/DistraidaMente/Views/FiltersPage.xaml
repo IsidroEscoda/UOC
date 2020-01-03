@@ -1,25 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="DeltaApps.PositiveThings.Views.FiltersPage"
              Title="Filtrar pruebas"
-             x:Class="DistraidaMente.Views.FiltersPage">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Padding="5">
+			 BackgroundColor="White" >
+    <!--
+    <NavigationPage.TitleView>
+    <Grid>
+        <Label Text="Last Entries" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="ClickMe" Clicked="Button_Clicked" />
+        </Grid>
+    </Grid>
+</NavigationPage.TitleView>
+
+    <NavigationPage.TitleView>
+        <Label HorizontalTextAlignment="Center" Text="Filtrar pruebas" />
+    </NavigationPage.TitleView>-->
+	<ContentPage.Content>
+        <StackLayout Padding="5">
             <Label Text="Selecciona los tipos de pruebas que deseas" HorizontalOptions="Center" VerticalOptions="Center" />
             <Grid Margin="10" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="260"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Switch x:Name="switch1" Grid.Row="0" ClassId="personal" Grid.Column="1" Toggled="OnToggled" IsToggled="{Binding IsChecked}" HorizontalOptions="EndAndExpand"></Switch>
+                <Switch x:Name="switch1" Grid.Row="0" ClassId="personal" Grid.Column="1" Toggled="OnToggled" HorizontalOptions="EndAndExpand"></Switch>
                 <Label Grid.Row="0" Grid.Column="0" Text="Personales" VerticalOptions="Center" />
 
                 <Switch x:Name="switch2" Grid.Row="1" ClassId="acertijos" Grid.Column="1" Toggled="OnToggled" IsToggled="{Binding IsChecked}" HorizontalOptions="EndAndExpand"></Switch>
@@ -38,7 +52,7 @@
                 <Label Grid.Row="5" Grid.Column="0" Text="Actividades sociales" VerticalOptions="Center"/>
 
                 <Switch x:Name="switch7" Grid.Row="6" ClassId="moverme" Grid.Column="1" Toggled="OnToggled" IsToggled="{Binding IsChecked}" HorizontalOptions="EndAndExpand"></Switch>
-                <Label VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Text="Pruebas de acción" StyleClass="lbl-fieldform"></Label>
+                <Label Grid.Row="6" Grid.Column="0" Text="Pruebas de acción" VerticalOptions="Center"/>
 
                 <Switch x:Name="switch8" Grid.Row="7" ClassId="musica" Grid.Column="1" Toggled="OnToggled" IsToggled="{Binding IsChecked}" HorizontalOptions="EndAndExpand"></Switch>
                 <Label Grid.Row="7" Grid.Column="0" Text="Música" VerticalOptions="Center"/>
@@ -47,6 +61,6 @@
                 <Label Grid.Row="8" Grid.Column="0" Text="Relajación" VerticalOptions="Center"/>
             </Grid>
             <!--<Button Text="Back" Clicked="OnBackButtonClicked" VerticalOptions="EndAndExpand" />-->
-        </StackLayout>
-    </ContentPage.Content>
+		</StackLayout>
+	</ContentPage.Content>
 </ContentPage>

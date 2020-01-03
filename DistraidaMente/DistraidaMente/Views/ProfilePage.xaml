@@ -1,10 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="DistraidaMente.Views.ProfilePage">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+			 x:Class="DeltaApps.PositiveThings.Views.ProfilePage">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -85,17 +83,31 @@
                 <Setter Property="FontSize" Value="{StaticResource StatsCaptionFontSize}" />
             </Style>
 
-            <Style x:Key="ProfileButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource AzulClaro}" />
+            <Style x:Key="MainBodyLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource RegularFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="FollowButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="BorderRadius" Value="8" />
+                <Setter Property="BorderRadius" Value="20" />
+                <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
+            </Style>
+            <Style x:Key="ProfileButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AzulClaro}" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="BorderRadius" Value="0" />
                 <Setter Property="FontFamily" Value="{StaticResource MediumFontFamily}" />
                 <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <Grid ColumnSpacing="0" BackgroundColor="White" RowSpacing="0">
@@ -119,11 +131,12 @@
                     <Label HorizontalTextAlignment="Center" x:Name="label_name" Text="{Binding FullName}" Style="{StaticResource ProfileNameLabel}"/>
                 </StackLayout>
             </Grid>
-            <StackLayout HorizontalOptions="Center">
-                <Button Style="{StaticResource ProfileButton}" Text="Mis estadísticas" Clicked="OnStatsClicked" VerticalOptions="CenterAndExpand" />
-                <Button Style="{StaticResource ProfileButton}" Text="Filtrar pruebas" Clicked="OnFiltersClicked" VerticalOptions="CenterAndExpand" />
-                <Button Style="{StaticResource ProfileButton}" Text="Configurar notificaciones" Clicked="OnNotificationsClicked" VerticalOptions="CenterAndExpand" />
+            <StackLayout Margin="20">
+                <Button Style="{StaticResource ProfileButton}" Text="Mis estadísticas" Clicked="OnUpcomingAppointmentsButtonClicked" VerticalOptions="FillAndExpand" />
+                <Button Style="{StaticResource ProfileButton}" Text="Filtrar pruebas" Clicked="OnUpcomingAppointmentsButtonClicked2" VerticalOptions="FillAndExpand" />
+                <Button Style="{StaticResource ProfileButton}" Text="Configurar notificaciones" Clicked="OnUpcomingAppointmentsButtonClicked3" VerticalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

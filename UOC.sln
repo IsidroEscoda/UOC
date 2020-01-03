@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositivaMente.Android", "Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositivaMente.iOS", "PositivaMente\PositivaMente.iOS\PositivaMente.iOS.csproj", "{F91C02A3-A197-4431-8C88-4A12D482409D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositivaMente", "PositivaMente\PositivaMente\PositivaMente.csproj", "{71EFF8B3-15B8-4FA1-B757-4346F9E02D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PositivaMente", "PositivaMente\PositivaMente\PositivaMente.csproj", "{71EFF8B3-15B8-4FA1-B757-4346F9E02D0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PositivaMente", "PositivaMente", "{2651BC0F-EE29-4959-BC08-D85A435DA038}"
 EndProject
