@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-            xmlns:views="clr-namespace:DeltaApps.PositiveThings.Views"
-             x:Class="DeltaApps.PositiveThings.Views.TabsPage">
+            xmlns:views="clr-namespace:DistraidaMente.Views"
+             x:Class="DistraidaMente.Views.TabsPage">
 
             <TabbedPage.Resources>
                 <ResourceDictionary>

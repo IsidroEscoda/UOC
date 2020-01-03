@@ -4,10 +4,9 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
-using DeltaApps.PositiveThings.Helpers;
-using DeltaApps.PositiveApps.Common.Model;
+using DistraidaMente.Common.Model;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
 	public partial class StaticPage : ContentPage
     {

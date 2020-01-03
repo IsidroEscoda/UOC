@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="false"
-             x:Class="DeltaApps.PositiveThings.Views.RankingPage">
+             x:Class="DistraidaMente.Views.RankingPage">
     <ContentPage.Content>
         <StackLayout Padding="20" Margin="0,30,0,0">
             <Grid BackgroundColor="#73edff" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="0">

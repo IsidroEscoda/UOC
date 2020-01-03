@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
 	public partial class NotificationsPage : ContentPage
 	{

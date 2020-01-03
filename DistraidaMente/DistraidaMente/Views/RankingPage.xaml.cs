@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using DeltaApps.PositiveThings.Helpers;
-using DeltaApps.PositiveThings.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Essentials;
 
 using Plugin.Connectivity;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
     public partial class RankingPage : ContentPage
     {

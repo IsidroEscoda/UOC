@@ -1,15 +1,15 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
 	public partial class FiltersPage : ContentPage
     {
-        DeltaApps.PositiveApps.Common.Model.Configuration _configuration;
+        DistraidaMente.Common.Model.Configuration _configuration;
 
         public FiltersPage()
 		{
-            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+            _configuration = new DistraidaMente.Common.Model.Configuration();
 
 			InitializeComponent ();
         }

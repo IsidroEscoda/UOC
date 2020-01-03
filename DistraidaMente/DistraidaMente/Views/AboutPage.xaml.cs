@@ -5,17 +5,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using DeltaApps.PositiveThings.ViewModels;
-using DeltaApps.PositiveThings.Model;
-using DeltaApps.CommonLibrary.Pages;
-using DeltaApps.CommonLibrary.Model;
-using DeltaApps.PositiveApps.Common.Model;
+using DistraidaMente.Common.Model;
 using System.Reflection;
-using DeltaApps.PositiveThings.Helpers;
 using Xamarin.Essentials;
 using Plugin.Connectivity;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -31,7 +26,7 @@ namespace DeltaApps.PositiveThings.Views
 
         public AboutPage()
         {
-            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+            _configuration = new DistraidaMente.Common.Model.Configuration();
 
             InitializeComponent();
 

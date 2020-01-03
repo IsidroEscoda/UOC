@@ -8,9 +8,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration;
-using DeltaApps.PositiveApps.Common.Model;
+using DistraidaMente.Common.Model;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabsPage : Xamarin.Forms.TabbedPage

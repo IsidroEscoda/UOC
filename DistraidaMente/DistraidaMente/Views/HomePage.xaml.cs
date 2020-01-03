@@ -1,11 +1,7 @@
 ﻿using DeltaApps.CommonLibrary.Helpers;
 using DeltaApps.CommonLibrary.Model;
-using DeltaApps.PositiveApps.Common.Model;
-using DeltaApps.PositiveApps.Common.Pages;
-using DeltaApps.PositiveThings.Controllers;
-using DeltaApps.PositiveThings.Helpers;
-using DeltaApps.PositiveThings.Model;
-using DeltaApps.PositiveThings.Pages;
+using DistraidaMente.Common.Model;
+using DistraidaMente.Common.Pages;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -13,9 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using FirebaseHelper = DeltaApps.PositiveThings.Helpers.FirebaseHelper;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
     public partial class HomePage : ContentPage
     {
@@ -40,7 +35,7 @@ namespace DeltaApps.PositiveThings.Views
 
         public HomePage()
         {
-            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+            _configuration = new DistraidaMente.Common.Model.Configuration();
 
 
             InitializeComponent();

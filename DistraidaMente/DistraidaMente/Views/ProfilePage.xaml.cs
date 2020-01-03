@@ -1,8 +1,8 @@
-﻿using DeltaApps.PositiveApps.Common.Model;
+﻿using DistraidaMente.Common.Model;
 using System;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveThings.Views
+namespace DistraidaMente.Views
 {
 	public partial class ProfilePage : ContentPage
     {
@@ -10,7 +10,7 @@ namespace DeltaApps.PositiveThings.Views
 
         public ProfilePage ()
         {
-            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+            _configuration = new DistraidaMente.Common.Model.Configuration();
 
 
             InitializeComponent();
