@@ -1,7 +1,11 @@
-﻿using DeltaApps.CommonLibrary.Helpers;
-using DeltaApps.CommonLibrary.Model;
+﻿using UOCApps.CommonLibrary.Helpers;
+using UOCApps.CommonLibrary.Model;
 using DistraidaMente.Common.Model;
 using DistraidaMente.Common.Pages;
+using DistraidaMente.Controllers;
+using DistraidaMente.Helpers;
+using DistraidaMente.Model;
+using DistraidaMente.Pages;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -9,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using FirebaseHelper = DistraidaMente.Helpers.FirebaseHelper;
 
 namespace DistraidaMente.Views
 {
@@ -170,16 +175,16 @@ namespace DistraidaMente.Views
 
             //_challenges.AddRange(PositiveThingsDatabase.GetCustomChallenges());
 
-            /*var completed = PositiveThingsDatabase.GetChallengesCompleted();
+            var completed = PositiveThingsDatabase.GetChallengesCompleted();
 
             foreach (Challenge c in _challenges)
             {
                 c.Completed = completed.Any(x => x.ChallengeId == c.Id);
-            }*/
+            }
         }
 
 
-        async void OpenChallengeCommand(object sender, EventArgs e)
+        void OpenChallengeCommand(object sender, EventArgs e)
         {
             activity.IsEnabled = true;
             activity.IsRunning = true;
@@ -191,6 +196,55 @@ namespace DistraidaMente.Views
 
             ShowChallengePage();
             //ShowChallengePage(3);
+
+            SetCheckBoxResumeAsync();
+        }
+
+        private async Task SetCheckBoxResumeAsync()
+        {
+            if (_configuration.ReadBoolProperty("personal"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Personal", _configuration.ReadProperty("docId"));
+            }
+            if (_configuration.ReadBoolProperty("acertijos"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Adivinanzas", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("enigmas"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Enigmas", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("diferencias"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Diferencias", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("sopas"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Sopas", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("relacionarme"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Sociales", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("moverme"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Accion", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("musica"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Musica", _configuration.ReadProperty("docId"));
+            }
+
+            if (_configuration.ReadBoolProperty("relax"))
+            {
+                await firebaseHelper.UpdatePersonCBR("Relax", _configuration.ReadProperty("docId"));
+            }
         }
 
         private void ShowChallengePage()
@@ -209,12 +263,31 @@ namespace DistraidaMente.Views
 
             bool showMessageIfSkipChallenge = _currentChallengeIndex == 2;
 
-            var challenge = _currentChallenges[_currentChallengeIndex];
+            bool showNoMoreChallenges = _currentChallenges.Count() <= 2;
+            bool showNoMoreChallenges2 = _currentChallengeIndex == _currentChallenges.Count();
 
-            ShowChallengePage(challenge, startChallenge, showMessageIfSkipChallenge);
+            if(_currentChallenges.Count() != 0)
+            {
+                if (_currentChallengeIndex <= _currentChallenges.Count()-1)
+                {
+                    var challenge = _currentChallenges[_currentChallengeIndex];
+                    ShowChallengePage(challenge, false, startChallenge, showMessageIfSkipChallenge);
+                }
+                else
+                {
+                    var challenge = new Challenge();
+                    ShowChallengePage(challenge, true, false, false);
+                }
+            }
+            else
+            {
+                var challenge = new Challenge();
+                ShowChallengePage(challenge, true, false, false);
+            }
+
         }
 
-        private void ShowChallengePage(Challenge challenge, bool startChallenge, bool showMessageIfSkipChallenge, bool showActionButtons = true)
+        private void ShowChallengePage(Challenge challenge, bool noMoreChallenges, bool startChallenge, bool showMessageIfSkipChallenge, bool showActionButtons = true)
         {
             int points = int.Parse(_configuration.ReadProperty("Points") ?? "0");
 
@@ -226,7 +299,7 @@ namespace DistraidaMente.Views
                 Data = $"Challenge type: { challenge.Type }, Challenge Id: { challenge.Id }",
             });
 
-            ChallengePage challengePage = new ChallengePage(_configuration, challenge, points, showMessageIfSkipChallenge, showActionButtons);
+            ChallengePage challengePage = new ChallengePage(_configuration, challenge, noMoreChallenges, points, showMessageIfSkipChallenge, showActionButtons);
 
             //selectChallengeTypePage.BackButtonPressed += () => { ShowSelectFirstEmotionalStatusPage(); };
             challengePage.EnableBackButton = false;
@@ -331,57 +404,57 @@ namespace DistraidaMente.Views
             //var notcompleted = _challenges.Where(x => (x.Type == challengeType) && !x.Completed).Randomize();
             if (_configuration.ReadBoolProperty("personal"))
             {
-                var personal = _challenges.Where(x => (x.TypeCheck == "1")).Randomize();
+                var personal = _challenges.Where(x => (x.TypeCheck.Contains("1")) && !x.Completed).Randomize();
                 chosen.AddRange(personal);
             }
 
             if (_configuration.ReadBoolProperty("acertijos"))
             {
 
-                var acertijos = _challenges.Where(x => (x.TypeCheck == "2")).Randomize();
+                var acertijos = _challenges.Where(x => (x.TypeCheck.Contains("2")) && !x.Completed).Randomize();
                 chosen.AddRange(acertijos);
             }
 
             if (_configuration.ReadBoolProperty("enigmas"))
             {
-                var enigmas = _challenges.Where(x => (x.TypeCheck == "3")).Randomize();
+                var enigmas = _challenges.Where(x => (x.TypeCheck.Contains("3")) && !x.Completed).Randomize();
                 chosen.AddRange(enigmas);
             }
 
             if (_configuration.ReadBoolProperty("diferencias"))
             {
-                var diferencias = _challenges.Where(x => (x.TypeCheck == "4")).Randomize();
+                var diferencias = _challenges.Where(x => (x.TypeCheck.Contains("4")) && !x.Completed).Randomize();
                 chosen.AddRange(diferencias);
             }
 
             if (_configuration.ReadBoolProperty("sopas"))
             {
 
-                var sopas = _challenges.Where(x => (x.TypeCheck == "5")).Randomize();
+                var sopas = _challenges.Where(x => (x.TypeCheck.Contains("5")) && !x.Completed).Randomize();
                 chosen.AddRange(sopas);
             }
 
             if (_configuration.ReadBoolProperty("relacionarme"))
             {
-                var relacionarme = _challenges.Where(x => (x.TypeCheck == "6")).Randomize();
+                var relacionarme = _challenges.Where(x => (x.TypeCheck.Contains("6")) && !x.Completed).Randomize();
                 chosen.AddRange(relacionarme);
             }
 
             if (_configuration.ReadBoolProperty("moverme"))
             {
-                var moverme = _challenges.Where(x => (x.TypeCheck.Contains("7"))).Randomize();
+                var moverme = _challenges.Where(x => (x.TypeCheck.Contains("7")) && !x.Completed).Randomize();
                 chosen.AddRange(moverme);
             }
 
             if (_configuration.ReadBoolProperty("musica"))
             {
-                var musica = _challenges.Where(x => (x.TypeCheck.Contains("8"))).Randomize();
+                var musica = _challenges.Where(x => (x.TypeCheck.Contains("8")) && !x.Completed).Randomize();
                 chosen.AddRange(musica);
             }
 
             if (_configuration.ReadBoolProperty("relax"))
             {
-                var relax = _challenges.Where(x => (x.TypeCheck.Contains("9"))).Randomize();
+                var relax = _challenges.Where(x => (x.TypeCheck.Contains("9")) && !x.Completed).Randomize();
                 chosen.AddRange(relax);
             }
 

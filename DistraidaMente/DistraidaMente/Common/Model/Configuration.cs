@@ -1,4 +1,4 @@
-﻿using DeltaApps.CommonLibrary.Model;
+﻿using UOCApps.CommonLibrary.Model;
 using System;
 using System.Globalization;
 using Xamarin.Essentials;

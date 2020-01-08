@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace DeltaApps.CommonLibrary.Model
+namespace UOCApps.CommonLibrary.Model
 {
     public class Theme
     {

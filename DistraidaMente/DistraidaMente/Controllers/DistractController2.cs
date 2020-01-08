@@ -42,7 +42,7 @@ namespace DistraidaMente.Controllers
 
         private void LoadChallenges()
         {
-            //string content = FilesHelper.ReadEmbeddedFileAsString("DeltaApps.PositiveThings.Text.challenges_" + _configuration.Language + ".json");
+            //string content = FilesHelper.ReadEmbeddedFileAsString("DistraidaMente.Text.challenges_" + _configuration.Language + ".json");
             string content = FilesHelper.ReadEmbeddedFileAsString("DistraidaMente.Text.challenges2_ES.json");
             _challenges = JsonConvert.DeserializeObject<List<Challenge>>(content);
         }

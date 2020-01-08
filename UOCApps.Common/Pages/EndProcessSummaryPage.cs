@@ -1,4 +1,4 @@
-﻿using UOCApps.CommonLibrary.Helpers;
+﻿using DeltaApps.CommonLibrary.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,13 +6,11 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
-using DistraidaMente.Controls;
-using DistraidaMente.Controllers;
-using DistraidaMente.Model;
-using DistraidaMente.Helpers;
-using DistraidaMente.Models;
+using DeltaApps.CommonLibrary.Controls;
+using DeltaApps.PositiveApps.Common.Model;
+using DeltaApps.PositiveApps.Common.Pages;
 
-namespace DistraidaMente.Common.Pages
+namespace DeltaApps.PositiveApps.Common.Pages
 {
     public class EndProcessSummaryPage : SummaryPage
     {
@@ -38,9 +36,9 @@ namespace DistraidaMente.Common.Pages
 
         protected override Layout SetupContentLayout()
         {
-            //emotionalIcon = FormsHelper.ConfigureImageButton($"{ _emotionalStatus.ToString().ToLower() }.png", null, SelectEmotionalStatusPage.EmotionalIconSize); // new Size(85, 85));
+            emotionalIcon = FormsHelper.ConfigureImageButton($"{ _emotionalStatus.ToString().ToLower() }.png", null, SelectEmotionalStatusPage.EmotionalIconSize); // new Size(85, 85));
 
-            //_mainLayout.Children.Add(emotionalIcon, new Rectangle(0.5, 130, SelectEmotionalStatusPage.EmotionalIconSize.Width, SelectEmotionalStatusPage.EmotionalIconSize.Height), AbsoluteLayoutFlags.XProportional);
+            _mainLayout.Children.Add(emotionalIcon, new Rectangle(0.5, 130, SelectEmotionalStatusPage.EmotionalIconSize.Width, SelectEmotionalStatusPage.EmotionalIconSize.Height), AbsoluteLayoutFlags.XProportional);
 
             return base.SetupContentLayout();
         }
@@ -76,7 +74,7 @@ namespace DistraidaMente.Common.Pages
             {
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                //TextColor = Configuration.Theme.TextColor,
+                TextColor = Configuration.Theme.TextColor,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
             };
@@ -98,7 +96,7 @@ namespace DistraidaMente.Common.Pages
             Frame itemFrame = new Frame()
             {
                 CornerRadius = 10,
-                //BackgroundColor = useSelectedColor ? Configuration.Theme.SelectedBackgroundColor : Configuration.Theme.SecondaryBackgroundColor,
+                BackgroundColor = useSelectedColor ? Configuration.Theme.SelectedBackgroundColor : Configuration.Theme.SecondaryBackgroundColor,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HasShadow = true,
@@ -107,9 +105,9 @@ namespace DistraidaMente.Common.Pages
 
             Label itemLabel = new Label()
             {
-                //FontSize = Configuration.Theme.MediumFontSize,
+                FontSize = Configuration.Theme.MediumFontSize,
                 Text = "Volver a empezar",
-                //TextColor = useSelectedColor ? Configuration.Theme.SelectedTextColor : Configuration.Theme.TextColor,
+                TextColor = useSelectedColor ? Configuration.Theme.SelectedTextColor : Configuration.Theme.TextColor,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -123,7 +121,7 @@ namespace DistraidaMente.Common.Pages
             Frame itemFrame2 = new Frame()
             {
                 CornerRadius = 10,
-                //BackgroundColor = useSelectedColor ? Configuration.Theme.SelectedBackgroundColor : Configuration.Theme.SecondaryBackgroundColor,
+                BackgroundColor = useSelectedColor ? Configuration.Theme.SelectedBackgroundColor : Configuration.Theme.SecondaryBackgroundColor,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HasShadow = true,
@@ -132,9 +130,9 @@ namespace DistraidaMente.Common.Pages
 
             Label itemLabel2 = new Label()
             {
-                //FontSize = Configuration.Theme.MediumFontSize,
+                FontSize = Configuration.Theme.MediumFontSize,
                 Text = "Salir",
-                //TextColor = useSelectedColor ? Configuration.Theme.SelectedTextColor : Configuration.Theme.TextColor,
+                TextColor = useSelectedColor ? Configuration.Theme.SelectedTextColor : Configuration.Theme.TextColor,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.FillAndExpand,

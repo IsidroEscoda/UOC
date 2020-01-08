@@ -1,16 +1,13 @@
-﻿using UOCApps.CommonLibrary.Helpers;
+﻿using DeltaApps.CommonLibrary.Helpers;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using DistraidaMente.Model;
-using DistraidaMente.Controllers;
-using DistraidaMente.Controls;
-using DistraidaMente.Helpers;
-using DistraidaMente.Common.Helpers;
+using DeltaApps.PositiveApps.Common.Model;
+using DeltaApps.CommonLibrary.Controls;
 
-namespace DistraidaMente.Common.Pages
+namespace DeltaApps.PositiveApps.Common.Pages
 {
     public abstract class BasePage : ContentPage, ISwipeCallBack
     {
@@ -118,7 +115,8 @@ namespace DistraidaMente.Common.Pages
 
         private void SetupPage()
         {
-           
+            BackgroundColor = Configuration.Theme.BackgroundColor;
+
             _mainLayout = new AbsoluteLayout()
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -152,6 +150,7 @@ namespace DistraidaMente.Common.Pages
         {
             Grid navigationBarLayout = new Grid()
             {
+                BackgroundColor = Configuration.Theme.BackgroundColor,
                 IsVisible = ShowNavigationBarOnEntry,
                 HeightRequest = 50,
             };
@@ -166,6 +165,8 @@ namespace DistraidaMente.Common.Pages
             NavigationBarMessage = new Label()
             {
                 HorizontalTextAlignment = TextAlignment.Center,
+                TextColor = Configuration.Theme.SelectedTextColor,
+                FontSize = Configuration.Theme.MediumFontSize,
                 VerticalTextAlignment = TextAlignment.Center,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -181,6 +182,7 @@ namespace DistraidaMente.Common.Pages
 
         private Image SetupNavigationButton(string type, bool enable, Func<bool> action)
         {
+            //Image navigationButton = FormsHelper.ConfigureImageButton($"DeltaApps.PositiveThinking.Images.{ type }.png", (e, s) => { action(); }, new Size(40, 40), false);
             Image navigationButton = FormsHelper.ConfigureImageButton($"{ type }.png", (e, s) => { action(); }, new Size(40, 40));
 
             navigationButton.IsEnabled = enable;

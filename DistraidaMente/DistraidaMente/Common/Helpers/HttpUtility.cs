@@ -36,7 +36,7 @@ using System.Net.Http;
 using System.Text;
 using System.Diagnostics;
 
-namespace DeltaApps.CommonLibrary.Helpers
+namespace UOCApps.CommonLibrary.Helpers
 {
     internal sealed class HttpUtility
     {

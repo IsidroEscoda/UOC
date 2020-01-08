@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DeltaApps.CommonLibrary.Helpers
+namespace UOCApps.CommonLibrary.Helpers
 {
     public static class RandomHelper
     {

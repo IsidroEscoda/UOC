@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DeltaApps.CommonLibrary.Helpers
+namespace UOCApps.CommonLibrary.Helpers
 { 
     public static class FontFamily
     {

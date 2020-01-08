@@ -61,7 +61,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="20" Margin="10" HorizontalOptions="CenterAndExpand">
+        <StackLayout Padding="10" Margin="10" HorizontalOptions="CenterAndExpand">
             <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -127,7 +127,21 @@
                     <Label x:Name="reserr" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
-            <Frame CornerRadius="5" BackgroundColor="#73edff">
+            
+            <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="18" Grid.Column="0" Text="Tipos de pruebas realizadas" HorizontalTextAlignment="Start"/>
+                    <ImageButton Grid.Column="1" x:Name="MyButton" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" Source="expand.png"/>
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="5" BackgroundColor="Transparent" x:Name="MyFrame" IsVisible="{Binding LabelVisible}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -135,24 +149,39 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Grid.Row="1">
-                        <Label FontSize="18" Grid.Column="0" Text="Tipo de pruebas realizadas " HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" />
-                        <Button FontSize="22" Grid.Column="1" x:Name="MyButton" Text="↓" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" FontAttributes="Bold" TextColor="Black" />
-                    </StackLayout>
-                    <StackLayout Grid.RowSpan="2" HeightRequest="100" IsVisible="{Binding LabelVisible}" x:Name="MyContent" Grid.Row="2" Grid.Column="0" >
-                        <ListView>
-                            <ListView.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                  <x:String>Adivinanzas</x:String>
-                                  <x:String>Sociales</x:String>
-                                  <x:String>Personales</x:String>
-                                  <x:String>Música</x:String>
-                                  <x:String>Relajación</x:String>
-                                  <x:String>Sopas</x:String>
-                                  <x:String>Diferencias</x:String>
-                                </x:Array>
-                            </ListView.ItemsSource>
-                        </ListView>
+                    <StackLayout BackgroundColor="Transparent" IsVisible="{Binding LabelVisible}" x:Name="MyContent" >
+                     <ListView VerticalOptions="Start"
+         HasUnevenRows="true"
+         CachingStrategy="RecycleElement"
+         SelectionMode="None"  x:Name="list" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label FontSize="18" Grid.Column="0" Text="{Binding TypeName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                                            <Label FontSize="18" Grid.Column="1" Text="{Binding Value}" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                                        </Grid>
+                                        <!--<Label HorizontalOptions="FillAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding TypeName}"></Span>
+                                                    <Span Text="{Binding Value}"></Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>-->
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     </StackLayout>
                 </Grid>
             </Frame>

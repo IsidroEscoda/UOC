@@ -1,10 +1,15 @@
-﻿namespace DistraidaMente.Models
+﻿namespace DistraidaMente.Model
 {
     public enum ChallengeType
     {
-        Cognitive,
-        Behavioral,
-        Social,
-        CreateCustomChallenge,
+        Personales,
+        Adivinanzas,
+        Enigmas,
+        Diferencias,
+        Sopas,
+        Sociales,
+        Accion,
+        Musica,
+        Relajación,
     }
 }

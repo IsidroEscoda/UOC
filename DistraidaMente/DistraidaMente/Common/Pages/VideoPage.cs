@@ -74,7 +74,7 @@ namespace DistraidaMente.Common.Pages
 
                 if (enableClose)
                 {
-                    var closeButton = FormsHelper.ConfigureImageButton("DeltaApps.CommonLibrary.Images.closevideo.png", (s, e) => { Close(); }, new Size(32, 32), false);
+                    var closeButton = FormsHelper.ConfigureImageButton("UOCApps.CommonLibrary.Images.closevideo.png", (s, e) => { Close(); }, new Size(32, 32), false);
 
                     closeButton.AnchorX = 0.5;
                     closeButton.AnchorY = 0.5;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DistraidaMente.Models
+namespace DistraidaMente.Model
 {
     public class InfoClassModel
     {

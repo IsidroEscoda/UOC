@@ -1,15 +1,12 @@
-﻿
-using UOCApps.CommonLibrary.Helpers;
-using DistraidaMente.Controllers;
-using DistraidaMente.Controls;
-using DistraidaMente.Helpers;
-using DistraidaMente.Model;
+﻿using DeltaApps.CommonLibrary.Controls;
+using DeltaApps.CommonLibrary.Helpers;
+using DeltaApps.PositiveApps.Common.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace DistraidaMente.Common.Pages
+namespace DeltaApps.PositiveApps.Common.Pages
 {
     public abstract class SummaryPage : BasePage
     {
@@ -163,6 +160,7 @@ namespace DistraidaMente.Common.Pages
                 youHaveChoosenContentParent.Children.Add(new AutoFontSizeLabel()
                 {
                     HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = Configuration.Theme.TextColor,
                     Text = "Has escogido",
                     Margin = new Thickness(0, 10, 0, 0),
                 }, 0, index);
@@ -202,6 +200,7 @@ namespace DistraidaMente.Common.Pages
             instructionsContentLayout.Children.Add(new BoxView()
             {
                 HeightRequest = 1,
+                BackgroundColor = Configuration.Theme.SecondaryBackgroundColor,
             }, 0, 0);
 
             instructionsContentLayout.Children.Add(SetupMessageGrid(), 0, 1);
@@ -209,6 +208,7 @@ namespace DistraidaMente.Common.Pages
             instructionsContentLayout.Children.Add(new BoxView()
             {
                 HeightRequest = 1,
+                BackgroundColor = Configuration.Theme.SecondaryBackgroundColor,
             }, 0, 2);
 
             //instructionsContentLayout.Children.Add(SetupBullets(), 0, 3);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace DeltaApps.CommonLibrary.Helpers
+namespace UOCApps.CommonLibrary.Helpers
 {
     public static class ColorHelper
     {

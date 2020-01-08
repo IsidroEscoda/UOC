@@ -5,8 +5,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using DistraidaMente.ViewModels;
+using DistraidaMente.Model;
+using UOCApps.CommonLibrary.Pages;
+using UOCApps.CommonLibrary.Model;
 using DistraidaMente.Common.Model;
 using System.Reflection;
+using DistraidaMente.Helpers;
 using Xamarin.Essentials;
 using Plugin.Connectivity;
 
@@ -42,7 +47,6 @@ namespace DistraidaMente.Views
             getContents.Clear();
             try
             {
-
                 //CheckConnectivity();
                 var isConnected = CrossConnectivity.Current.IsConnected;
 

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace DistraidaMente.Model
 {
-    public class ChallengeCompleted
+    public class RankingPosition
     {
-        public string ChallengeId { get; set; }
+        public int Position { get; set; }
+        public int Points { get; set; }
     }
 }

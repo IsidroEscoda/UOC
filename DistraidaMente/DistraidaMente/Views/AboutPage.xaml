@@ -19,7 +19,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="25" Margin="0,30,0,0">
+        <StackLayout Padding="15" Margin="0,30,0,0">
             <ListView Grid.Row="1"  Margin="5,15,5,25"  Footer="" x:Name="MyListView"
             GroupDisplayBinding="{Binding Title}"
                HasUnevenRows="true"
@@ -31,7 +31,7 @@
                                     <Frame  BorderColor="#e6e6e6" CornerRadius="0" HasShadow="false" Padding="10,10,10,10">
                                         <ScrollView>
                                             <StackLayout>
-                                                <Label TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
+                                                <Label x:Name="labelDesc" TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
                                             </StackLayout>
                                         </ScrollView>
                                     </Frame>
@@ -62,7 +62,7 @@
                             </DataTemplate>
                         </ListView.GroupHeaderTemplate>
             </ListView>
-            <StackLayout Padding="25">
+            <StackLayout Padding="25,0">
                 <Button FontSize="Large" Text="VIDEO" Clicked="OpenVideoCommand" VerticalOptions="EndAndExpand" 
                         BackgroundColor="{StaticResource Azuloscuro}"
                         TextColor="White"/>

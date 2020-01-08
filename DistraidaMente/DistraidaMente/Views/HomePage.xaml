@@ -32,7 +32,7 @@
             <Label Grid.Row="1" Grid.Column="0" Text="Quiero relacionarme" VerticalOptions="Center"/>
         </Grid>
 
-            <ListView x:Name="lstChallenges">  
+            <ListView x:Name="lstChallenges" SeparatorVisibility="None" >  
                     <ListView.ItemTemplate>  
                         <DataTemplate>  
                             <TextCell Text="{Binding Statement}"></TextCell>  

@@ -1,4 +1,4 @@
-﻿namespace DistraidaMente.Models
+﻿namespace DistraidaMente.Model
 {
     public enum ChallengeSource
     {

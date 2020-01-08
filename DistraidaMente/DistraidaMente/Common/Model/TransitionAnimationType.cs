@@ -1,4 +1,4 @@
-﻿namespace DeltaApps.CommonLibrary.Model
+﻿namespace UOCApps.CommonLibrary.Model
 {
     public enum TransitionAnimationType
     {

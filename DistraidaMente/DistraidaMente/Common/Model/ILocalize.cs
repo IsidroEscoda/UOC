@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace DeltaApps.CommonLibrary.Model
+namespace UOCApps.CommonLibrary.Model
 {
     public interface ILocalize
     {
