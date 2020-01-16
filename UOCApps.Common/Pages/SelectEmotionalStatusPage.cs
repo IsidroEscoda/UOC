@@ -1,13 +1,13 @@
-﻿using DeltaApps.CommonLibrary.Helpers;
+﻿using UOCApps.CommonLibrary.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using DeltaApps.CommonLibrary.Controls;
-using DeltaApps.PositiveApps.Common.Model;
+using UOCApps.CommonLibrary.Controls;
+using UOCApps.Common.Model;
 
-namespace DeltaApps.PositiveApps.Common.Pages
+namespace UOCApps.Common.Pages
 {
     public delegate void EmotionalStatusSelectedHandler(EmotionalStatus emotionalStatus);
 

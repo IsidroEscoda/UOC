@@ -1,12 +1,12 @@
-﻿using DeltaApps.CommonLibrary.Controls;
-using DeltaApps.CommonLibrary.Helpers;
-using DeltaApps.PositiveApps.Common.Model;
+﻿using UOCApps.CommonLibrary.Controls;
+using UOCApps.CommonLibrary.Helpers;
+using UOCApps.Common.Model;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveApps.Common.Pages
+namespace UOCApps.Common.Pages
 {
     public delegate bool ReadCodeHandler(string code);
 
@@ -23,7 +23,7 @@ namespace DeltaApps.PositiveApps.Common.Pages
         public ReadInvitationCodePage(Configuration configuration) : base(configuration)
         {
             ShowNavigationBarOnEntry = false;
-            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
+            _configuration = new UOCApps.Common.Model.Configuration();
         }
 
         protected override Layout SetupContentLayout()

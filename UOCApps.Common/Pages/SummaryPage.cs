@@ -1,12 +1,12 @@
-﻿using DeltaApps.CommonLibrary.Controls;
-using DeltaApps.CommonLibrary.Helpers;
-using DeltaApps.PositiveApps.Common.Model;
+﻿using UOCApps.CommonLibrary.Controls;
+using UOCApps.CommonLibrary.Helpers;
+using UOCApps.Common.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace DeltaApps.PositiveApps.Common.Pages
+namespace UOCApps.Common.Pages
 {
     public abstract class SummaryPage : BasePage
     {

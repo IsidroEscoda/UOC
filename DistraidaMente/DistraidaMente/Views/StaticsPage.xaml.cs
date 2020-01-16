@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using DistraidaMente.Helpers;
-using DistraidaMente.Common.Model;
+using UOCApps.Common.Model;
 using DistraidaMente.Model;
 using System.Collections.ObjectModel;
 

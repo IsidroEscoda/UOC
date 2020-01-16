@@ -1,7 +1,7 @@
 ﻿using UOCApps.CommonLibrary.Helpers;
 using UOCApps.CommonLibrary.Model;
-using DistraidaMente.Common.Model;
-using DistraidaMente.Common.Pages;
+using UOCApps.Common.Model;
+using UOCApps.Common.Pages;
 using DistraidaMente.Controllers;
 using DistraidaMente.Helpers;
 using DistraidaMente.Model;
@@ -40,7 +40,7 @@ namespace DistraidaMente.Views
 
         public HomePage()
         {
-            _configuration = new DistraidaMente.Common.Model.Configuration();
+            _configuration = new UOCApps.Common.Model.Configuration();
 
 
             InitializeComponent();
@@ -109,10 +109,7 @@ namespace DistraidaMente.Views
             selectEmotionalStatusPage.EmoticonOffset = -50;
             selectEmotionalStatusPage.EmotionalStatusSelected += (emotionalStatus) =>
             {
-                TabsPage tabbed = new TabsPage(_configuration);
-
-                Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = tabbed; });
-
+                ShowChallengePage();
                 SaveEventData(new DistractionEventData()
                 {
                     EventType = DistractionEventType.SelectFirstEmotionalStatus,
@@ -123,7 +120,7 @@ namespace DistraidaMente.Views
 
                 //ShowSelectChallengeTypePage(emotionalStatus);
             };
-
+            _configuration.FirstEmoticons = "false";
             //selectEmotionalStatusPage.BackButtonPressed += () => { Xamarin.Forms.Application.Current.MainPage = new MainPage(); };
 
             selectEmotionalStatusPage.Initialize();
@@ -135,6 +132,7 @@ namespace DistraidaMente.Views
 
         protected async override void OnAppearing()
         {
+            _configuration.FirstEmoticons = "true";
             base.OnAppearing();
             // Do your thing
             try
@@ -168,13 +166,6 @@ namespace DistraidaMente.Views
         {
             _challenges = await firebaseHelper.GetAllChallengeFB();
 
-            //var allChallenge = await firebaseHelper.GetAllChallengeFB();
-            //lstChallenges.ItemsSource = allChallenge;
-
-            //_challenges = JsonConvert.DeserializeObject<List<Challenge>>(content);
-
-            //_challenges.AddRange(PositiveThingsDatabase.GetCustomChallenges());
-
             var completed = PositiveThingsDatabase.GetChallengesCompleted();
 
             foreach (Challenge c in _challenges)
@@ -184,20 +175,25 @@ namespace DistraidaMente.Views
         }
 
 
-        void OpenChallengeCommand(object sender, EventArgs e)
+        async void OpenChallengeCommand(object sender, EventArgs e)
         {
+            activity.IsVisible = true;
             activity.IsEnabled = true;
             activity.IsRunning = true;
-            activity.IsVisible = true;
-            //StartProcess();
-            //CheckboxesTypes();
-            Random random = new Random();
-            int num = random.Next(0, 3);
 
-            ShowChallengePage();
-            //ShowChallengePage(3);
+            openChallengeBtn.IsEnabled = false;
+            openChallengeBtn.IsVisible = false;
 
-            SetCheckBoxResumeAsync();
+            if(_configuration.FirstEmoticons == "true")
+            {
+                ShowSelectFirstEmotionalStatusPage();
+            }
+            else
+            {
+                ShowChallengePage();
+            }
+
+            //await SetCheckBoxResumeAsync();
         }
 
         private async Task SetCheckBoxResumeAsync()
@@ -249,6 +245,7 @@ namespace DistraidaMente.Views
 
         private void ShowChallengePage()
         {
+
             bool startChallenge = _currentChallenges == null;
 
             if (_currentChallenges == null)
@@ -266,6 +263,7 @@ namespace DistraidaMente.Views
             bool showNoMoreChallenges = _currentChallenges.Count() <= 2;
             bool showNoMoreChallenges2 = _currentChallengeIndex == _currentChallenges.Count();
 
+
             if(_currentChallenges.Count() != 0)
             {
                 if (_currentChallengeIndex <= _currentChallenges.Count()-1)
@@ -275,15 +273,20 @@ namespace DistraidaMente.Views
                 }
                 else
                 {
-                    var challenge = new Challenge();
-                    ShowChallengePage(challenge, true, false, false);
+                    _currentChallengeIndex = 0;
+                       var challenge = _currentChallenges[_currentChallengeIndex];
+                    ShowChallengePage(challenge, false, startChallenge, showMessageIfSkipChallenge);
                 }
             }
             else
             {
                 var challenge = new Challenge();
                 ShowChallengePage(challenge, true, false, false);
+                //DisplayAlert("Alert", "You have been alerted", "OK");
             }
+
+            /*var challenge = _currentChallenges[_currentChallengeIndex];
+            ShowChallengePage(challenge, false, startChallenge, showMessageIfSkipChallenge);*/
 
         }
 
@@ -310,6 +313,84 @@ namespace DistraidaMente.Views
             challengePage.AnimateNavigationBarOnEntry = false;
             challengePage.AnimateNavigationBarOnBack = false;
             challengePage.AnimateNavigationBarOnNext = false;
+
+            challengePage.ChallengeNoMore += () => {
+
+                var completedDB = PositiveThingsDatabase.GetChallengesCompleted();
+                foreach (Challenge ch in _challenges)
+                {
+                    if (ch.Completed)
+                    {
+                        if (_configuration.ReadBoolProperty("personal") && ch.TypeCheck.Contains("1"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("acertijos") && ch.TypeCheck.Contains("2"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("enigmas") && ch.TypeCheck.Contains("3"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("diferencias") && ch.TypeCheck.Contains("4"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("sopas") && ch.TypeCheck.Contains("5"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("relacionarme") && ch.TypeCheck.Contains("6"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("moverme") && ch.TypeCheck.Contains("7"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("musica") && ch.TypeCheck.Contains("8"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+
+                        if (_configuration.ReadBoolProperty("relax") && ch.TypeCheck.Contains("9"))
+                        {
+                            PositiveThingsDatabase.RemoveChallengeCompletedId(ch.Id);
+                            ch.Completed = false;
+                            continue;
+                        }
+                    }
+                }
+                var completedDB2 = PositiveThingsDatabase.GetChallengesCompleted();
+                //Task.Run(() => ShowChallengePage());
+                //Device.BeginInvokeOnMainThread(() => ShowChallengePage());
+                _currentChallenges = null;
+                ShowChallengePage();
+            };
 
             challengePage.ChallengeSkipped += () => { Task.Run(() => /*ShowChallengePage(challenge.Type)*/ShowChallengePage()); };
 
@@ -399,10 +480,68 @@ namespace DistraidaMente.Views
         private List<Challenge> ChooseChallenges()
         {
             List<Challenge> chosen = new List<Challenge>();
+            foreach (Challenge ch in _challenges)
+            {
+                if (!ch.Completed)
+                {
+                    if (_configuration.ReadBoolProperty("personal") && ch.TypeCheck.Contains("1"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
 
+                    if (_configuration.ReadBoolProperty("acertijos") && ch.TypeCheck.Contains("2"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("enigmas") && ch.TypeCheck.Contains("3"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("diferencias") && ch.TypeCheck.Contains("4"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("sopas") && ch.TypeCheck.Contains("5"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("relacionarme") && ch.TypeCheck.Contains("6"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("moverme") && ch.TypeCheck.Contains("7"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("musica") && ch.TypeCheck.Contains("8"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+
+                    if (_configuration.ReadBoolProperty("relax") && ch.TypeCheck.Contains("9"))
+                    {
+                        chosen.Add(ch);
+                        continue;
+                    }
+                }
+            }
             //var completed = _challenges.Where(x => (x.Type == challengeType) && x.Completed).Randomize();
             //var notcompleted = _challenges.Where(x => (x.Type == challengeType) && !x.Completed).Randomize();
-            if (_configuration.ReadBoolProperty("personal"))
+            /*if (_configuration.ReadBoolProperty("personal"))
             {
                 var personal = _challenges.Where(x => (x.TypeCheck.Contains("1")) && !x.Completed).Randomize();
                 chosen.AddRange(personal);
@@ -456,7 +595,7 @@ namespace DistraidaMente.Views
             {
                 var relax = _challenges.Where(x => (x.TypeCheck.Contains("9")) && !x.Completed).Randomize();
                 chosen.AddRange(relax);
-            }
+            }*/
 
             if (!_configuration.ReadBoolProperty("personal") && !_configuration.ReadBoolProperty("acertijos") &&
                 !_configuration.ReadBoolProperty("enigmas") && !_configuration.ReadBoolProperty("diferencias") &&
@@ -464,7 +603,7 @@ namespace DistraidaMente.Views
                 !_configuration.ReadBoolProperty("moverme") && !_configuration.ReadBoolProperty("musica") &&
                 !_configuration.ReadBoolProperty("relax"))
             {
-                chosen.AddRange(_challenges.Randomize());
+                chosen.AddRange(_challenges.Where(x => !x.Completed).Randomize());
                 
             }
 
@@ -494,7 +633,10 @@ namespace DistraidaMente.Views
             endProcessSummaryPage.StartAgainPressed += () => {
                 //StartProcess();
 
-                ShowSelectFirstEmotionalStatusPage();
+                //ShowSelectFirstEmotionalStatusPage();
+
+                _configuration.FirstEmoticons = "true";
+                ShowSelectChallengeTypePage(null);
             };
 
 
@@ -507,6 +649,19 @@ namespace DistraidaMente.Views
             Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = endProcessSummaryPage; });
 
             currentPage = null;
+        }
+
+        internal void ShowSelectChallengeTypePage(EmotionalStatus? emotionalStatus = null)
+        {
+            try
+            {
+                TabPageCS selectChallengeTypePage = new TabPageCS(_configuration);
+                Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = selectChallengeTypePage; });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         internal void SaveEventDataSync(DistractionEventData data)

@@ -46,8 +46,9 @@
                     IsVisible="False"  
                     Color="Blue"  
                     BackgroundColor="Transparent"/> 
-            <Button  Margin="0,20" FontSize="Large" Text="COMENZAR"  Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
-                        BackgroundColor="{StaticResource Azulclaro}"/>
+            <Button x:Name="openChallengeBtn" Margin="0,20" FontSize="Large" Text="COMENZAR"  Clicked="OpenChallengeCommand" VerticalOptions="EndAndExpand" 
+                        BackgroundColor="{StaticResource Azulclaro}"
+                    TextColor="Black"/>
             <Label Text="Pulsa aquí para que te aparezcan las pruebas" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
         </StackLayout> 
     </StackLayout>

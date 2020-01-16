@@ -71,8 +71,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Número de pruebas realizadas" HorizontalTextAlignment="Start"/>
-                    <Label x:Name="prurea" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Número de pruebas realizadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="prurea" FontSize="17" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
             <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
@@ -84,8 +84,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Número de pruebas saltadas" HorizontalTextAlignment="Start"/>
-                    <Label x:Name="prusal" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Número de pruebas saltadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="prusal" FontSize="17" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
             <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
@@ -97,8 +97,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Número de pistas solicitadas" HorizontalTextAlignment="Start"/>
-                    <Label x:Name="pissol" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Número de pistas solicitadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="pissol" FontSize="17" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
             <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
@@ -110,8 +110,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Número de respuestas acertadas" HorizontalTextAlignment="Start"/>
-                    <Label x:Name="resace" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Número de respuestas acertadas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="resace" FontSize="17" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
             <Frame CornerRadius="5" Style="{StaticResource ProfileStaticFrame}" BackgroundColor="#73edff">
@@ -123,8 +123,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Número de respuestas erróneas" HorizontalTextAlignment="Start"/>
-                    <Label x:Name="reserr" FontSize="18" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Número de respuestas erróneas" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="reserr" FontSize="17" Grid.Column="1" Text="" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                 </Grid>
             </Frame>
             
@@ -137,7 +137,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="18" Grid.Column="0" Text="Tipos de pruebas realizadas" HorizontalTextAlignment="Start"/>
+                    <Label FontSize="16" Grid.Column="0" Text="Tipos de pruebas realizadas" HorizontalTextAlignment="Start"/>
                     <ImageButton Grid.Column="1" x:Name="MyButton" Clicked="Rotate_Clicked" HorizontalOptions="End" BackgroundColor="Transparent" Rotation="180" Source="expand.png"/>
                 </Grid>
             </Frame>
@@ -166,8 +166,8 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <Label FontSize="18" Grid.Column="0" Text="{Binding TypeName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-                                            <Label FontSize="18" Grid.Column="1" Text="{Binding Value}" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalTextAlignment="End"/>
+                                            <Label FontSize="16" Grid.Column="0" Text="{Binding TypeName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                                            <Label FontSize="16" Grid.Column="1" Text="{Binding Value}" VerticalTextAlignment="Center" FontAttributes="Bold" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <!--<Label HorizontalOptions="FillAndExpand">
                                             <Label.FormattedText>

@@ -8,7 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Essentials;
 
-using Plugin.Connectivity;
+using Xamarin.Forms.Xaml;
+using System.Collections;
 
 namespace DistraidaMente.Views
 {
@@ -21,50 +22,14 @@ namespace DistraidaMente.Views
 
         }
 
-        private void CheckConnectivity()
-        {
-            var isConnected = CrossConnectivity.Current.IsConnected;
-            if (isConnected == true)
-            {
-                DisplayAlert("Internet", "Tienes Internet!", "Ok");
-            }
-            else
-            {
-                DisplayAlert("No Internet", "Para poder ver el ranking se necesita una conexión a Internet!!", "Ok");
-            }
-        }
-
-        /*public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-{
-   Ranking lvi = value as Ranking;
-   int ordinal = 0;
-
-   return ordinal;
-}
-
-public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-{
-   throw new NotImplementedException("GetIndexMultiConverter_ConvertBack");
-}*/
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             try
             {
-
-                //CheckConnectivity();
-                var isConnected = CrossConnectivity.Current.IsConnected;
-
-                if (isConnected == true)
-                {
-                    var allRankings = await firebaseHelper.GetRankings();
-                    lstRankings.ItemsSource = allRankings;
-                }
-                else
-                {
-                    await DisplayAlert("No Internet", "Para poder ver el ranking se necesita una conexión a Internet!!", "Ok");
-                }
+                var allRankings = await firebaseHelper.GetRankings();
+                lstRankings.ItemsSource = allRankings;
+        
             }
             catch (System.Exception ex)
             {
@@ -72,5 +37,21 @@ public object[] ConvertBack(object value, Type[] targetTypes, object parameter, 
             }
         }
     }
-    
+    public class MyConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var listView = parameter as ListView;
+            var collection = listView.ItemsSource as IList;
+            object item = value;
+
+            var index = collection.IndexOf(item) + 1;
+            return index;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? 1 : 0;
+        }
+    }
 }

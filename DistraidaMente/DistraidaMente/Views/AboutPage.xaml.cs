@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using DistraidaMente.ViewModels;
-using DistraidaMente.Model;
-using UOCApps.CommonLibrary.Pages;
-using UOCApps.CommonLibrary.Model;
-using DistraidaMente.Common.Model;
+using DeltaApps.PositiveThings.ViewModels;
+using DeltaApps.PositiveThings.Model;
+using DeltaApps.CommonLibrary.Pages;
+using DeltaApps.CommonLibrary.Model;
+using DeltaApps.PositiveApps.Common.Model;
 using System.Reflection;
-using DistraidaMente.Helpers;
+using DeltaApps.PositiveThings.Helpers;
 using Xamarin.Essentials;
 using Plugin.Connectivity;
+using DeltaApps.PositiveThings.Pages;
 
 namespace DistraidaMente.Views
 {
@@ -31,7 +32,7 @@ namespace DistraidaMente.Views
 
         public AboutPage()
         {
-            _configuration = new DistraidaMente.Common.Model.Configuration();
+            _configuration = new DeltaApps.PositiveApps.Common.Model.Configuration();
 
             InitializeComponent();
 
@@ -127,12 +128,40 @@ namespace DistraidaMente.Views
 
         private void exitWhenFinish()
         {
-            TabsPage tabbed = new TabsPage(_configuration);
+            TabPageCS tabbed = new TabPageCS(_configuration);
             tabbed.CurrentPage = tabbed.Children[1];
             Device.BeginInvokeOnMainThread(() => { Xamarin.Forms.Application.Current.MainPage = tabbed; });
 
             //Navigation.PopAsync();
 
         }
+    }
+
+    public class HtmlConverter : IValueConverter
+    {
+        #region Converter
+
+        public object Convert(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            if (value != null)
+            {
+                string text = (string)value;
+                return System.Net.WebUtility.HtmlDecode(text);
+                //return "html converter";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+
+        #endregion
     }
 }

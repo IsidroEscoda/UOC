@@ -1,4 +1,4 @@
-﻿using DistraidaMente.Common.Model;
+﻿using UOCApps.Common.Model;
 using System;
 using Xamarin.Forms;
 
@@ -10,7 +10,7 @@ namespace DistraidaMente.Views
 
         public ProfilePage ()
         {
-            _configuration = new DistraidaMente.Common.Model.Configuration();
+            _configuration = new UOCApps.Common.Model.Configuration();
 
 
             InitializeComponent();

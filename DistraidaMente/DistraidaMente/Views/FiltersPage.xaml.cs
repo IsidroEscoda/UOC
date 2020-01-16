@@ -5,11 +5,11 @@ namespace DistraidaMente.Views
 {
 	public partial class FiltersPage : ContentPage
     {
-        DistraidaMente.Common.Model.Configuration _configuration;
+        UOCApps.Common.Model.Configuration _configuration;
 
         public FiltersPage()
 		{
-            _configuration = new DistraidaMente.Common.Model.Configuration();
+            _configuration = new UOCApps.Common.Model.Configuration();
 
 			InitializeComponent ();
         }

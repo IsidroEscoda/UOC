@@ -1,4 +1,4 @@
-﻿using DeltaApps.CommonLibrary.Helpers;
+﻿using UOCApps.CommonLibrary.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
-using DeltaApps.CommonLibrary.Controls;
-using DeltaApps.PositiveApps.Common.Model;
-using DeltaApps.PositiveApps.Common.Pages;
+using UOCApps.CommonLibrary.Controls;
+using UOCApps.Common.Model;
+using UOCApps.Common.Pages;
 
-namespace DeltaApps.PositiveApps.Common.Pages
+namespace UOCApps.Common.Pages
 {
     public class EndProcessSummaryPage : SummaryPage
     {

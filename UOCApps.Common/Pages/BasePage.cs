@@ -1,13 +1,13 @@
-﻿using DeltaApps.CommonLibrary.Helpers;
+﻿using UOCApps.CommonLibrary.Helpers;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using DeltaApps.PositiveApps.Common.Model;
-using DeltaApps.CommonLibrary.Controls;
+using UOCApps.Common.Model;
+using UOCApps.CommonLibrary.Controls;
 
-namespace DeltaApps.PositiveApps.Common.Pages
+namespace UOCApps.Common.Pages
 {
     public abstract class BasePage : ContentPage, ISwipeCallBack
     {
@@ -182,7 +182,7 @@ namespace DeltaApps.PositiveApps.Common.Pages
 
         private Image SetupNavigationButton(string type, bool enable, Func<bool> action)
         {
-            //Image navigationButton = FormsHelper.ConfigureImageButton($"DeltaApps.PositiveThinking.Images.{ type }.png", (e, s) => { action(); }, new Size(40, 40), false);
+            //Image navigationButton = FormsHelper.ConfigureImageButton($"UOCApps.PositiveThinking.Images.{ type }.png", (e, s) => { action(); }, new Size(40, 40), false);
             Image navigationButton = FormsHelper.ConfigureImageButton($"{ type }.png", (e, s) => { action(); }, new Size(40, 40));
 
             navigationButton.IsEnabled = enable;

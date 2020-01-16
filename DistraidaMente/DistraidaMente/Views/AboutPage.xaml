@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:DistraidaMente.Views"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="false"
              x:Class="DistraidaMente.Views.AboutPage" BackgroundColor="White">
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
+            <local:HtmlConverter x:Key="htmlConverter" />
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="Accent">#96d1ff</Color>
             <Color x:Key="LightTextColor">#999999</Color>
@@ -19,8 +21,8 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Padding="15" Margin="0,30,0,0">
-            <ListView Grid.Row="1"  Margin="5,15,5,25"  Footer="" x:Name="MyListView"
+        <StackLayout Padding="10,0" Margin="0,30,0,0">
+            <ListView Grid.Row="1"  Margin="5,25,5,25"  Footer="" x:Name="MyListView"
             GroupDisplayBinding="{Binding Title}"
                HasUnevenRows="true"
              SeparatorVisibility="None"
@@ -31,7 +33,8 @@
                                     <Frame  BorderColor="#e6e6e6" CornerRadius="0" HasShadow="false" Padding="10,10,10,10">
                                         <ScrollView>
                                             <StackLayout>
-                                                <Label x:Name="labelDesc" TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
+                                                <Label x:Name="labelDesc" TextType="Html" TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description}"/>
+                                                <!--<Label x:Name="labelDesc" TextType="Html" TextColor="#888888" VerticalTextAlignment="Start" Text="{Binding Description , Converter={StaticResource htmlConverter}}"/>-->
                                             </StackLayout>
                                         </ScrollView>
                                     </Frame>
@@ -42,9 +45,9 @@
                             <DataTemplate>
                                 <ViewCell Height="50">
 
-                                    <Frame HasShadow="false" BackgroundColor="{StaticResource Azulclaro}" CornerRadius="0" Padding="10,0,10,0" >
+                                    <Frame Margin="0,5" HasShadow="false" BackgroundColor="{StaticResource Azulclaro}" CornerRadius="0" Padding="10,0,10,0" >
                                         <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                                                    <Label Text="{Binding Title}" FontSize="17"
+                                                    <Label Text="{Binding Title}"
                                                         VerticalTextAlignment="Center"
                                                          TextColor="Black"
                                                          VerticalOptions="CenterAndExpand"/>
@@ -62,8 +65,8 @@
                             </DataTemplate>
                         </ListView.GroupHeaderTemplate>
             </ListView>
-            <StackLayout Padding="25,0">
-                <Button FontSize="Large" Text="VIDEO" Clicked="OpenVideoCommand" VerticalOptions="EndAndExpand" 
+            <StackLayout Padding="10">
+                <Button Margin="0,20" FontSize="Large" Text="VIDEO" Clicked="OpenVideoCommand" VerticalOptions="EndAndExpand" 
                         BackgroundColor="{StaticResource Azuloscuro}"
                         TextColor="White"/>
                 <Label Text="Pulsa aquí para ver un video explicativo" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
